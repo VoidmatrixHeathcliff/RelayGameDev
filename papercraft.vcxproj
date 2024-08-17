@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{8f91bf91-28be-482d-b8e7-785254c7a63e}</ProjectGuid>
+    <RootNamespace>papercraft</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>./thirdparty/OpenString-CMake/include</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>./thirdparty/OpenString-CMake/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>./thirdparty/OpenString-CMake/include</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>./thirdparty/OpenString-CMake/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="source\assets\AssetManager.cpp" />
+    <ClCompile Include="source\EasyXBase.cpp" />
+    <ClCompile Include="source\game\Block.cpp" />
+    <ClCompile Include="source\game\component\Component.cpp" />
+    <ClCompile Include="source\game\Game.cpp" />
+    <ClCompile Include="source\gui\Button.cpp" />
+    <ClCompile Include="source\gui\GUIManager.cpp" />
+    <ClCompile Include="source\gui\GUIObject.cpp" />
+    <ClCompile Include="source\gui\ImageLabel.cpp" />
+    <ClCompile Include="source\gui\Input.cpp" />
+    <ClCompile Include="source\gui\ProgressBar.cpp" />
+    <ClCompile Include="source\gui\TextLabel.cpp" />
+    <ClCompile Include="source\launcher\Launcher.cpp" />
+    <ClCompile Include="source\mic\MCIManager.cpp" />
+    <ClCompile Include="source\String.cpp" />
+    <ClCompile Include="thirdparty\OpenString-CMake\source\codeunit_sequence.cpp" />
+    <ClCompile Include="thirdparty\OpenString-CMake\source\format.cpp" />
+    <ClCompile Include="thirdparty\OpenString-CMake\source\text.cpp" />
+    <ClCompile Include="thirdparty\OpenString-CMake\source\wide_text.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\assets\AssetManager.h" />
+    <ClInclude Include="include\EasyXBase.h" />
+    <ClInclude Include="include\event\Event.h" />
+    <ClInclude Include="include\game\Block.h" />
+    <ClInclude Include="include\game\component\Component.h" />
+    <ClInclude Include="include\game\Game.h" />
+    <ClInclude Include="include\gui\GUIManager.h" />
+    <ClInclude Include="include\gui\GUIObject.h" />
+    <ClInclude Include="include\gui\ImageLabel.h" />
+    <ClInclude Include="include\gui\Input.h" />
+    <ClInclude Include="include\gui\ProgressBar.h" />
+    <ClInclude Include="include\gui\TextLabel.h" />
+    <ClInclude Include="include\launcher\Launcher.h" />
+    <ClInclude Include="include\mic\MCIManager.h" />
+    <ClInclude Include="include\singleton\Singleton.h" />
+    <ClInclude Include="include\String.h" />
+    <ClInclude Include="thirdparty\mINI\src\mini\ini.h" />
+    <ClInclude Include="thirdparty\OpenString-CMake\include\codeunit_sequence.h" />
+    <ClInclude Include="thirdparty\OpenString-CMake\include\codeunit_sequence_view.h" />
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\adapters.h" />
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\assertion.h" />
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\basic_types.h" />
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\constants.h" />
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\definitions.h" />
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\functions.h" />
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\linear_iterator.h" />
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\platforms.h" />
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\sequence.h" />
+    <ClInclude Include="thirdparty\OpenString-CMake\include\format.h" />
+    <ClInclude Include="thirdparty\OpenString-CMake\include\text.h" />
+    <ClInclude Include="thirdparty\OpenString-CMake\include\text_view.h" />
+    <ClInclude Include="thirdparty\OpenString-CMake\include\unicode.h" />
+    <ClInclude Include="thirdparty\OpenString-CMake\include\wide_text.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="include\event\Event.h" />
+    <Content Include="include\game\component\Component.h" />
+    <Content Include="include\gui\Button.h" />
+    <Content Include="(README) Margoo - Program connection documentation.md" />
+    <Content Include="README\UI-Demo.png" />
+    <Content Include="thirdparty\mINI\.gitignore" />
+    <Content Include="thirdparty\mINI\CHANGELOG.md" />
+    <Content Include="thirdparty\mINI\icon.png" />
+    <Content Include="thirdparty\mINI\LICENSE" />
+    <Content Include="thirdparty\mINI\README.md" />
+    <Content Include="thirdparty\OpenString-CMake\.git" />
+    <Content Include="thirdparty\OpenString-CMake\.gitignore" />
+    <Content Include="thirdparty\OpenString-CMake\CMakeLists.txt" />
+    <Content Include="thirdparty\OpenString-CMake\LICENSE" />
+    <Content Include="thirdparty\OpenString-CMake\OpenString.sln" />
+    <Content Include="thirdparty\OpenString-CMake\README.md" />
+    <Content Include="thirdparty\OpenString-CMake\xmake.lua" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

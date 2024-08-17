@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="thirdparty\OpenString-CMake\source\codeunit_sequence.cpp">
+      <Filter>thirdparty\open-string\source</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\OpenString-CMake\source\text.cpp">
+      <Filter>thirdparty\open-string\source</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\OpenString-CMake\source\wide_text.cpp">
+      <Filter>thirdparty\open-string\source</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\OpenString-CMake\source\format.cpp">
+      <Filter>thirdparty\open-string\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EasyXBase.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\String.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\assets\AssetManager.cpp">
+      <Filter>source\assets</Filter>
+    </ClCompile>
+    <ClCompile Include="source\game\component\Component.cpp">
+      <Filter>source\game\component</Filter>
+    </ClCompile>
+    <ClCompile Include="source\game\Block.cpp">
+      <Filter>source\game</Filter>
+    </ClCompile>
+    <ClCompile Include="source\game\Game.cpp">
+      <Filter>source\game</Filter>
+    </ClCompile>
+    <ClCompile Include="source\gui\Button.cpp">
+      <Filter>source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\gui\ImageLabel.cpp">
+      <Filter>source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\gui\Input.cpp">
+      <Filter>source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\gui\GUIManager.cpp">
+      <Filter>source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\gui\GUIObject.cpp">
+      <Filter>source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\gui\ProgressBar.cpp">
+      <Filter>source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\gui\TextLabel.cpp">
+      <Filter>source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mic\MCIManager.cpp">
+      <Filter>source\MCI</Filter>
+    </ClCompile>
+    <ClCompile Include="source\launcher\Launcher.cpp">
+      <Filter>source\launcher</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="thirdparty\OpenString-CMake\include\wide_text.h">
+      <Filter>thirdparty\open-string\include</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\adapters.h">
+      <Filter>thirdparty\open-string\include</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\assertion.h">
+      <Filter>thirdparty\open-string\include</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\OpenString-CMake\include\codeunit_sequence.h">
+      <Filter>thirdparty\open-string\include</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\OpenString-CMake\include\codeunit_sequence_view.h">
+      <Filter>thirdparty\open-string\include</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\linear_iterator.h">
+      <Filter>thirdparty\open-string\include</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\OpenString-CMake\include\text.h">
+      <Filter>thirdparty\open-string\include</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\OpenString-CMake\include\text_view.h">
+      <Filter>thirdparty\open-string\include</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\OpenString-CMake\include\unicode.h">
+      <Filter>thirdparty\open-string\include</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\basic_types.h">
+      <Filter>thirdparty\open-string\include</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\constants.h">
+      <Filter>thirdparty\open-string\include</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\definitions.h">
+      <Filter>thirdparty\open-string\include</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\OpenString-CMake\include\format.h">
+      <Filter>thirdparty\open-string\include</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\functions.h">
+      <Filter>thirdparty\open-string\include</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\platforms.h">
+      <Filter>thirdparty\open-string\include</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\mINI\src\mini\ini.h">
+      <Filter>thirdparty\INIParser</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EasyXBase.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\String.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assets\AssetManager.h">
+      <Filter>include\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\Block.h">
+      <Filter>include\game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\component\Component.h">
+      <Filter>include\game\component</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\Game.h">
+      <Filter>include\game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\event\Event.h">
+      <Filter>include\event</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gui\GUIManager.h">
+      <Filter>include\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gui\GUIObject.h">
+      <Filter>include\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gui\ImageLabel.h">
+      <Filter>include\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gui\Input.h">
+      <Filter>include\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gui\ProgressBar.h">
+      <Filter>include\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\OpenString-CMake\include\common\sequence.h">
+      <Filter>thirdparty\open-string\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\singleton\Singleton.h">
+      <Filter>include\singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="include\launcher\Launcher.h">
+      <Filter>include\launcher</Filter>
+    </ClInclude>
+    <ClInclude Include="include\mic\MCIManager.h">
+      <Filter>include\MCI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gui\TextLabel.h">
+      <Filter>include\gui</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="thirdparty">
+      <UniqueIdentifier>{9feac914-c1f5-4dbc-a7ef-3cd884752b3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\open-string">
+      <UniqueIdentifier>{85a3cc03-87a5-4308-9e91-4ea2ec01923b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\open-string\include">
+      <UniqueIdentifier>{31ba48b4-aa1f-4564-82f2-787474a7a6f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\open-string\source">
+      <UniqueIdentifier>{f9bff669-d0b8-4520-a1c5-047e7ef082de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\INIParser">
+      <UniqueIdentifier>{5ea77c3f-c9d8-437e-b7f1-d153bdd86ed3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{17314f23-c446-4dba-9baa-7bb7961c221b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{4c88bc87-7393-4d1a-9a6f-fbed29b6a270}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\assets">
+      <UniqueIdentifier>{500c64fc-c409-4b8e-b62b-9ab26dacb456}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\game">
+      <UniqueIdentifier>{aab55e27-efa4-4d94-bff0-8f92e842c2dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\game\component">
+      <UniqueIdentifier>{5fa8e55e-2461-4453-8d00-3e7f2b7f0a28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\event">
+      <UniqueIdentifier>{24d1ec0d-c93c-4e86-86b0-f8f42c231f3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\gui">
+      <UniqueIdentifier>{f8300636-a46d-436b-8177-c32bd792cf01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\singleton">
+      <UniqueIdentifier>{fe9d2566-e198-4911-a0c6-b90062041ca6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\launcher">
+      <UniqueIdentifier>{3ecd0848-ff13-43b0-ac0a-23b6b231e9e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\MCI">
+      <UniqueIdentifier>{49b2defa-7cc3-45a3-8744-740dc3dc51c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\assets">
+      <UniqueIdentifier>{7d1d4c2b-761d-4c67-8b55-3b57f469233a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\game">
+      <UniqueIdentifier>{9101e35f-a28d-4edd-9bad-7daf57c21094}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\game\component">
+      <UniqueIdentifier>{4aa8d0dd-b11e-4db4-866d-52a22ca60dbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\gui">
+      <UniqueIdentifier>{49256e1b-a979-44d4-a882-db0804ac42ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\MCI">
+      <UniqueIdentifier>{d4b0af7b-e152-4b7c-b1ae-4a1649e7220d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\launcher">
+      <UniqueIdentifier>{260d64c4-2870-465d-9a02-6abdb72e6c9a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
