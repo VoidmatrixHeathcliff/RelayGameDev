@@ -59,6 +59,12 @@
     <ClCompile Include="source\launcher\Launcher.cpp">
       <Filter>source\launcher</Filter>
     </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>source\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="statusbar.cpp">
+      <Filter>source\statusbar</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="thirdparty\OpenString-CMake\include\wide_text.h">
@@ -160,6 +166,12 @@
     <ClInclude Include="include\gui\TextLabel.h">
       <Filter>include\gui</Filter>
     </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>include\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="statusbar.h">
+      <Filter>include\statusbar</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="thirdparty">
@@ -224,6 +236,18 @@
     </Filter>
     <Filter Include="source\launcher">
       <UniqueIdentifier>{260d64c4-2870-465d-9a02-6abdb72e6c9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Timer">
+      <UniqueIdentifier>{b85ce6cb-f93e-434a-be2b-9d2680e880ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\statusbar">
+      <UniqueIdentifier>{1a5b87ce-7629-43e7-8ad9-e9503138aefa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Timer">
+      <UniqueIdentifier>{8e46a642-cc75-4cd6-90cc-296a535b9d2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\statusbar">
+      <UniqueIdentifier>{5204dcba-8700-414d-b1eb-7d1611b6cb73}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

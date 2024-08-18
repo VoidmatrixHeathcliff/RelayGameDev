@@ -3,6 +3,8 @@
 #include "../../include/game/Game.h"
 
 #include <codecvt>
+#define UI_DEMO
+
 
 PLGame::PLGame(const int &Width, const int &Height, const PString &PlayerName)
     : PWindow(Width, Height, ostr::format("PaperCraft : {}'s world", PlayerName)), _playerName(PlayerName), _assetManager(PGetSingleton<PAssetManager>())

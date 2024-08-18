@@ -153,10 +153,12 @@
     <ClCompile Include="source\launcher\Launcher.cpp" />
     <ClCompile Include="source\mic\MCIManager.cpp" />
     <ClCompile Include="source\String.cpp" />
+    <ClCompile Include="statusbar.cpp" />
     <ClCompile Include="thirdparty\OpenString-CMake\source\codeunit_sequence.cpp" />
     <ClCompile Include="thirdparty\OpenString-CMake\source\format.cpp" />
     <ClCompile Include="thirdparty\OpenString-CMake\source\text.cpp" />
     <ClCompile Include="thirdparty\OpenString-CMake\source\wide_text.cpp" />
+    <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\assets\AssetManager.h" />
@@ -175,6 +177,7 @@
     <ClInclude Include="include\mic\MCIManager.h" />
     <ClInclude Include="include\singleton\Singleton.h" />
     <ClInclude Include="include\String.h" />
+    <ClInclude Include="statusbar.h" />
     <ClInclude Include="thirdparty\mINI\src\mini\ini.h" />
     <ClInclude Include="thirdparty\OpenString-CMake\include\codeunit_sequence.h" />
     <ClInclude Include="thirdparty\OpenString-CMake\include\codeunit_sequence_view.h" />
@@ -192,6 +195,7 @@
     <ClInclude Include="thirdparty\OpenString-CMake\include\text_view.h" />
     <ClInclude Include="thirdparty\OpenString-CMake\include\unicode.h" />
     <ClInclude Include="thirdparty\OpenString-CMake\include\wide_text.h" />
+    <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="include\event\Event.h" />

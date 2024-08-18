@@ -5,6 +5,8 @@
 #pragma once
 
 #include "../EasyXBase.h"
+#include<vector>
+
 
 /// Yeah, that is actually the "block" hitbox
 class PBlockHitboxComponents
@@ -18,7 +20,7 @@ class PBlock
 public:
     /// Construct the block with the texture
     /// @param Texture The block's texture pointer
-    PBlock(PImage *Texture);
+    PBlock(PImage* Texture);
     ~PBlock() = default;
 
 public:
@@ -44,8 +46,35 @@ public:
         return false;
     }
 
-    /// TODO
+    /// <summary>
+    /// """?????""
+    /// </summary>
+    int GetIdFrame() {
+        return id_frame;// ID序列号
+    }
+
+    void Hurt() {
+        RemoveBlock = true;//受伤状态
+    }
+
+
+    void Removing() {
+        //不知道怎么写好
+        //TODO
+    }
+
+
 
 private:
-    PImage *_texture;
+    PImage* _texture;
+
+    /// <summary>
+    /// """?????""
+    /// </summary>
+    bool RemoveBlock;   //方块的状态，这个是指放置时状态，只有方块放置才有效，为true是被移除，
+    int id_frame;   //放置方块的序列号
+    TCHAR BlockName[128];    //方块的名字
+    int BlockBlood;  //方块的血量?,你可以改为你跟喜欢的名字
+    bool RemovingBlock;  //方块是否正在被移除
+
 };

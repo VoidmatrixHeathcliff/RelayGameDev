@@ -1,6 +1,5 @@
 #include "./include/launcher/Launcher.h"
 #include "./include/game/Game.h"
-
 ///
 /// Feel free to delete the code inside the #ifdef
 /// since it is onlt for demo!
@@ -131,9 +130,11 @@ private:
     PTextLabel  *_inputText;
 };
 
+
 int WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
     UIExample();
+
 }
 
 #else
