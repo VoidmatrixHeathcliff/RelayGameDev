@@ -137,7 +137,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="include\entity\animals\Animal.h" />
+    <ClCompile Include="include\entity_attr\buff\Buff_Ignited.h" />
+    <ClCompile Include="include\FSM\player\PlayerState.h" />
+    <ClCompile Include="include\FSM\StateMachine.h" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="source\assets\AssetManager.cpp" />
     <ClCompile Include="source\EasyXBase.cpp" />
     <ClCompile Include="source\game\Block.cpp" />
@@ -153,17 +157,28 @@
     <ClCompile Include="source\launcher\Launcher.cpp" />
     <ClCompile Include="source\mic\MCIManager.cpp" />
     <ClCompile Include="source\String.cpp" />
-    <ClCompile Include="statusbar.cpp" />
+    <ClCompile Include="source\statusbar\Statusbar.cpp" />
     <ClCompile Include="thirdparty\OpenString-CMake\source\codeunit_sequence.cpp" />
     <ClCompile Include="thirdparty\OpenString-CMake\source\format.cpp" />
     <ClCompile Include="thirdparty\OpenString-CMake\source\text.cpp" />
     <ClCompile Include="thirdparty\OpenString-CMake\source\wide_text.cpp" />
-    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="source\time\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\animation\Animation.h" />
+    <ClInclude Include="include\animation\Animator.h" />
     <ClInclude Include="include\assets\AssetManager.h" />
     <ClInclude Include="include\EasyXBase.h" />
+    <ClInclude Include="include\entity\animals\Sheep.h" />
+    <ClInclude Include="include\entity\Entity.h" />
+    <ClInclude Include="include\entity\mobs\Enemy.h" />
+    <ClInclude Include="include\entity\mobs\Zombie.h" />
+    <ClInclude Include="include\entity\Player.h" />
+    <ClInclude Include="include\entity_attr\buff\Buff.h" />
+    <ClInclude Include="include\entity_attr\stats\EntityStatsManager.h" />
     <ClInclude Include="include\event\Event.h" />
+    <ClInclude Include="include\FSM\EntityState.h" />
+    <ClInclude Include="include\entity_attr\buff\BuffManager.h" />
     <ClInclude Include="include\game\Block.h" />
     <ClInclude Include="include\game\component\Component.h" />
     <ClInclude Include="include\game\Game.h" />
@@ -177,7 +192,7 @@
     <ClInclude Include="include\mic\MCIManager.h" />
     <ClInclude Include="include\singleton\Singleton.h" />
     <ClInclude Include="include\String.h" />
-    <ClInclude Include="statusbar.h" />
+    <ClInclude Include="include\statusbar\Statusbar.h" />
     <ClInclude Include="thirdparty\mINI\src\mini\ini.h" />
     <ClInclude Include="thirdparty\OpenString-CMake\include\codeunit_sequence.h" />
     <ClInclude Include="thirdparty\OpenString-CMake\include\codeunit_sequence_view.h" />
@@ -195,7 +210,7 @@
     <ClInclude Include="thirdparty\OpenString-CMake\include\text_view.h" />
     <ClInclude Include="thirdparty\OpenString-CMake\include\unicode.h" />
     <ClInclude Include="thirdparty\OpenString-CMake\include\wide_text.h" />
-    <ClInclude Include="Time.h" />
+    <ClInclude Include="include\time\Time.h" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="include\event\Event.h" />

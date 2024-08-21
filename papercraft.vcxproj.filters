@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="thirdparty\OpenString-CMake\source\codeunit_sequence.cpp">
       <Filter>thirdparty\open-string\source</Filter>
     </ClCompile>
@@ -59,11 +59,23 @@
     <ClCompile Include="source\launcher\Launcher.cpp">
       <Filter>source\launcher</Filter>
     </ClCompile>
-    <ClCompile Include="Time.cpp">
-      <Filter>source\Timer</Filter>
-    </ClCompile>
-    <ClCompile Include="statusbar.cpp">
+    <ClCompile Include="source\statusbar\Statusbar.cpp">
       <Filter>source\statusbar</Filter>
+    </ClCompile>
+    <ClCompile Include="source\time\Time.cpp">
+      <Filter>source\time</Filter>
+    </ClCompile>
+    <ClCompile Include="include\FSM\player\PlayerState.h">
+      <Filter>include\FSM\player</Filter>
+    </ClCompile>
+    <ClCompile Include="include\FSM\StateMachine.h">
+      <Filter>include\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="include\entity\animals\Animal.h">
+      <Filter>include\entity\animals</Filter>
+    </ClCompile>
+    <ClCompile Include="include\entity_attr\buff\Buff_Ignited.h">
+      <Filter>include\entity_attr\buff</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -166,11 +178,44 @@
     <ClInclude Include="include\gui\TextLabel.h">
       <Filter>include\gui</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
-      <Filter>include\Timer</Filter>
-    </ClInclude>
-    <ClInclude Include="statusbar.h">
+    <ClInclude Include="include\statusbar\Statusbar.h">
       <Filter>include\statusbar</Filter>
+    </ClInclude>
+    <ClInclude Include="include\time\Time.h">
+      <Filter>include\time</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entity\mobs\Enemy.h">
+      <Filter>include\entity\mobs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entity_attr\buff\Buff.h">
+      <Filter>include\entity_attr\buff</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entity\Entity.h">
+      <Filter>include\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entity_attr\stats\EntityStatsManager.h">
+      <Filter>include\entity_attr\stats</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entity\Player.h">
+      <Filter>include\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entity\animals\Sheep.h">
+      <Filter>include\entity\animals</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entity\mobs\Zombie.h">
+      <Filter>include\entity\mobs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entity_attr\buff\BuffManager.h">
+      <Filter>include\entity_attr\buff</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FSM\EntityState.h">
+      <Filter>include\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="include\animation\Animation.h">
+      <Filter>include\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\animation\Animator.h">
+      <Filter>include\animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -237,17 +282,44 @@
     <Filter Include="source\launcher">
       <UniqueIdentifier>{260d64c4-2870-465d-9a02-6abdb72e6c9a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\Timer">
-      <UniqueIdentifier>{b85ce6cb-f93e-434a-be2b-9d2680e880ce}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\statusbar">
-      <UniqueIdentifier>{1a5b87ce-7629-43e7-8ad9-e9503138aefa}</UniqueIdentifier>
+      <UniqueIdentifier>{e81ab1f5-3d2c-4938-871a-67818b35c32a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\Timer">
-      <UniqueIdentifier>{8e46a642-cc75-4cd6-90cc-296a535b9d2e}</UniqueIdentifier>
+    <Filter Include="include\time">
+      <UniqueIdentifier>{0e236e69-a93c-448e-9be4-52795bfcda2a}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\statusbar">
-      <UniqueIdentifier>{5204dcba-8700-414d-b1eb-7d1611b6cb73}</UniqueIdentifier>
+      <UniqueIdentifier>{5ef908d1-c960-458d-8764-3cde5f764c11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\time">
+      <UniqueIdentifier>{c6b2135f-5b04-406a-8a8c-4839c66edfc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\FSM">
+      <UniqueIdentifier>{166d3b06-e206-42fa-b549-779e3f74dd0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\FSM\player">
+      <UniqueIdentifier>{9b853d0f-b29d-4939-9829-831524e7e578}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\entity">
+      <UniqueIdentifier>{571b0aff-3e23-401a-b820-78791c00696d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\entity_attr">
+      <UniqueIdentifier>{fe9ed8f2-a59f-48f5-be6d-ec78b6a77c86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\entity\animals">
+      <UniqueIdentifier>{e75c8a87-fa67-44c6-928d-80f550b9a5f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\entity\mobs">
+      <UniqueIdentifier>{ef9d106d-783e-4209-8bf8-f1b8dffd5c61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\entity_attr\buff">
+      <UniqueIdentifier>{a6cda9a1-094d-4e91-bfb2-0b84282778bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\entity_attr\stats">
+      <UniqueIdentifier>{97284a18-9b43-4c83-b8a0-9987a6e521e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\animation">
+      <UniqueIdentifier>{1e28cee6-4e31-4d66-ae17-ca24c68106b5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

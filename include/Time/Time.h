@@ -36,7 +36,7 @@ public:
 			}
 			shotted = true;
 			pass_time = 0;
-		}
+		
 	}
 
 	void set_callback(std::function<void()>callback) {

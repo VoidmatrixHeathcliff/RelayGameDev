@@ -17,6 +17,6 @@ public:
 private:
 	std::vector<int> IdFrame;//物品栏？
 
-	std::vector<IMAGE*> img_avatar;//这个是武平的放置的所需的图片指针
+	std::vector<IMAGE*> img_avatar;//这个是物品的放置的所需的图片指针
 };
 
