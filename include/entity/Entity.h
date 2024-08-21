@@ -24,7 +24,8 @@ protected:
 	POINT pos = { 0,0 }; //实体在屏幕上的坐标位置
 
 	int facingDir = 1; //实体朝向，-1左，1右
-	
+
+
 public:
 	void SetVelocity(int xVelocity, int yVelocity); //赋予实体以位移速度
 
