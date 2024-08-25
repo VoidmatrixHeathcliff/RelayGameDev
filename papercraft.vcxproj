@@ -208,6 +208,7 @@
     <ClInclude Include="include\statusbar\Statusbar.h" />
     <ClInclude Include="include\time\Timer.h" />
     <ClInclude Include="include\vec2\Vec2.h" />
+    <ClInclude Include="make3d.h" />
     <ClInclude Include="new_animation.h" />
     <ClInclude Include="thirdparty\mINI\src\mini\ini.h" />
     <ClInclude Include="thirdparty\OpenString-CMake\include\codeunit_sequence.h" />
