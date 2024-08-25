@@ -162,9 +162,10 @@
     <ClCompile Include="thirdparty\OpenString-CMake\source\format.cpp" />
     <ClCompile Include="thirdparty\OpenString-CMake\source\text.cpp" />
     <ClCompile Include="thirdparty\OpenString-CMake\source\wide_text.cpp" />
-    <ClCompile Include="source\time\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="assets.h" />
+    <ClInclude Include="easyx_window.h" />
     <ClInclude Include="include\animation\Animation.h" />
     <ClInclude Include="include\animation\Animator.h" />
     <ClInclude Include="include\assets\AssetManager.h" />
@@ -193,6 +194,7 @@
     <ClInclude Include="include\singleton\Singleton.h" />
     <ClInclude Include="include\String.h" />
     <ClInclude Include="include\statusbar\Statusbar.h" />
+    <ClInclude Include="new_animation.h" />
     <ClInclude Include="thirdparty\mINI\src\mini\ini.h" />
     <ClInclude Include="thirdparty\OpenString-CMake\include\codeunit_sequence.h" />
     <ClInclude Include="thirdparty\OpenString-CMake\include\codeunit_sequence_view.h" />
@@ -210,7 +212,8 @@
     <ClInclude Include="thirdparty\OpenString-CMake\include\text_view.h" />
     <ClInclude Include="thirdparty\OpenString-CMake\include\unicode.h" />
     <ClInclude Include="thirdparty\OpenString-CMake\include\wide_text.h" />
-    <ClInclude Include="include\time\Time.h" />
+    <ClInclude Include="throw_ exception.h" />
+    <ClInclude Include="timer.h" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="include\event\Event.h" />

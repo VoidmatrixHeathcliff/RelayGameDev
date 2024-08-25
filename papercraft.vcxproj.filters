@@ -62,9 +62,6 @@
     <ClCompile Include="source\statusbar\Statusbar.cpp">
       <Filter>source\statusbar</Filter>
     </ClCompile>
-    <ClCompile Include="source\time\Time.cpp">
-      <Filter>source\time</Filter>
-    </ClCompile>
     <ClCompile Include="include\FSM\player\PlayerState.h">
       <Filter>include\FSM\player</Filter>
     </ClCompile>
@@ -181,9 +178,6 @@
     <ClInclude Include="include\statusbar\Statusbar.h">
       <Filter>include\statusbar</Filter>
     </ClInclude>
-    <ClInclude Include="include\time\Time.h">
-      <Filter>include\time</Filter>
-    </ClInclude>
     <ClInclude Include="include\entity\mobs\Enemy.h">
       <Filter>include\entity\mobs</Filter>
     </ClInclude>
@@ -216,6 +210,21 @@
     </ClInclude>
     <ClInclude Include="include\animation\Animator.h">
       <Filter>include\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="easyx_window.h">
+      <Filter>tools</Filter>
+    </ClInclude>
+    <ClInclude Include="throw_ exception.h">
+      <Filter>tools</Filter>
+    </ClInclude>
+    <ClInclude Include="assets.h">
+      <Filter>include\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="new_animation.h">
+      <Filter>include\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.h">
+      <Filter>include\time</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -291,9 +300,6 @@
     <Filter Include="source\statusbar">
       <UniqueIdentifier>{5ef908d1-c960-458d-8764-3cde5f764c11}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\time">
-      <UniqueIdentifier>{c6b2135f-5b04-406a-8a8c-4839c66edfc0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\FSM">
       <UniqueIdentifier>{166d3b06-e206-42fa-b549-779e3f74dd0f}</UniqueIdentifier>
     </Filter>
@@ -320,6 +326,9 @@
     </Filter>
     <Filter Include="include\animation">
       <UniqueIdentifier>{1e28cee6-4e31-4d66-ae17-ca24c68106b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools">
+      <UniqueIdentifier>{dbfd1012-e3f2-46e9-9c60-dae83afbc3a1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

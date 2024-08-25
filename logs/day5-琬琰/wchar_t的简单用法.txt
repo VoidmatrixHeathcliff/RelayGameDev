@@ -1,0 +1,2 @@
+"111"是const char*类型 
+L"111"是const wchar_t*类型 

@@ -139,7 +139,7 @@ int WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 #else
 
-int WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
+int WinMain(HINSTANCE, HINSTANCE, LPSTR, int)//这个函数相当于主函数
 {
     try
     {

@@ -3,6 +3,8 @@
 //
 #pragma once
 
+//？该类属于偏底层代码，这里有一些问题，没有深度研究，推荐优化
+
 #include "../../include/EasyXBase.h"
 #include "../../include/animation/Animator.h"
 #include "../../include/FSM/StateMachine.h"

@@ -2,7 +2,7 @@
 //受PAnimtor管理的各动画
 //
 #pragma once
-
+//？这个动画类提供的模板只在状态机里会调用
 #include <string>
 #include <vector>
 
