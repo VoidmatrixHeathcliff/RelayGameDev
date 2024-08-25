@@ -1,7 +1,6 @@
 #include"../../include/scene/GameScene.h"
 #include"../../include/game/collision/CollisionManager.h"
 
-
 void GameScene::_OnMessage(ExMessage& Message) {
 	player->onMessage(Message);
 }
@@ -31,6 +30,14 @@ GameScene::GameScene() {
 	blocks.push_back(new PBlock(nullptr, { 6.f,5.f }));
 	blocks.push_back(new PBlock(nullptr, { 7.f,5.f }));
 	blocks.push_back(new PBlock(nullptr, { 8.f,5.f }));
+
+
+	blocks.push_back(new PBlock(nullptr, { 5.f,10.f }));
+	blocks.push_back(new PBlock(nullptr, { 9.f,10.f }));
+	blocks.push_back(new PBlock(nullptr, { 10.f,10.f }));
+	blocks.push_back(new PBlock(nullptr, { 6.f,10.f }));
+	blocks.push_back(new PBlock(nullptr, { 7.f,10.f }));
+	blocks.push_back(new PBlock(nullptr, { 8.f,10.f }));
 
 	player = new PPlayer();
 

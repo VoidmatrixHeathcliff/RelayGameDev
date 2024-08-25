@@ -63,7 +63,7 @@ void PLGame::Loop() {
 		std::chrono::duration<float> dt = currentTime - previousTime;
 		previousTime = currentTime;
 		float deltaTime = std::min(dt.count(), 0.1f);
-
+		
 		//update
 		currentScene->OnUpdate(deltaTime);
 

@@ -18,9 +18,9 @@ void LoadScene::_OnUpdate(float deltaTime) {
 
 	// We are actually loading resource of music :)
 	if ((progress >= 70.f && musicLoadDone) || progress < 70.f) {
-		progress += 0.2f;
+		progress += 0.1f;
 	}
-
+	
 	//Sleep(16)
 }
 

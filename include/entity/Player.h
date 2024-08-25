@@ -92,7 +92,7 @@ public:
 	void set_attackDamage(int x) {
 		stats.attackDamage = (Stat)x;
 	}
-	Stat get_maxHealth()const {
+	Stat get_maxHealth() const {
 		return stats.maxHealth;
 	}
 	Stat get_currentHealth()const {
@@ -106,11 +106,27 @@ public:
 		switch (msg.message) {
 			case WM_KEYDOWN:
 				switch (msg.vkcode) {
+					case VK_LBUTTON:
+						//todo	鼠标左键
+						break;
+					case VK_RBUTTON:
+						//todo  鼠标右键
+						break;
 					case 0x41:
 						isMovingLeft = true;
 						break;
 					case 0x44:
 						isMovingRight = true;
+						break;
+					case 0x57:
+						//if(isGrounded)//需要碰撞层回调检测才能实现
+						isJumping = true;
+						break;
+					case 0x4D:
+						//todo M
+						break;
+					case VK_SPACE: //空格键
+						run = true;
 						break;
 				}
 				break;
@@ -121,6 +137,9 @@ public:
 						break;
 					case 0x44:
 						isMovingRight = false;
+						break;
+					case VK_SPACE:
+						run = false;
 						break;
 				}
 				break;
@@ -148,16 +167,32 @@ public:
 					  (int)(scale * (hb->position.y + hb->size.y)));
 	}
 
-	void update(float deltatime)override {
+	void update(float deltatime) override {
+		if (isJumping) {
+			hb->velocity.y = -jumpForce; // 设置垂直速度为跳跃力量
+			isJumping = false;
+		}
+
+		// 处理水平移动
 		float speed = 0.f;
-		if (isMovingLeft)speed -= 1.f;
-		if (isMovingRight)speed += 1.f;
-		hb->velocity.x = speed;
+		if (isMovingLeft) speed -= 2.f;
+		if (isMovingRight) speed += 2.f;
+		if (run) speed *= runfast;
+		hb->velocity.x = speed ;
+
+		
 	}
 
 protected:
 	bool isMovingLeft = false;		//是否向左走
 	bool isMovingRight = false;		//是否向右走
+
+	bool isJumping = false;       // 是否正在跳跃
+	bool isGrounded = true;       // 是否在地面上，需要碰撞层回调检测才能实现
+	float jumpForce = 10.0f;      // 跳跃力量
+
+	bool run = false;                // 是否奔跑
+	float runfast = 2.5f;          // 奔跑速度
 
 	std::unordered_map<PlayerAssets, PAssets*>head_assets;		//头图集
 	std::unordered_map<PlayerAssets, PAssets*>body_assets;		//身体图集

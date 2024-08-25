@@ -118,9 +118,11 @@ public:
 	}
 
 	void step(float deltaTime) {
+		if (hitboxList.empty() || deltaTime <= 0) { return; }
 		move(deltaTime);
 		handleCollision();
 	}
+
 };
 
 #pragma pop_macro("min")

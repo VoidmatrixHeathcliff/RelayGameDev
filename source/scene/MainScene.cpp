@@ -22,6 +22,7 @@ void MainScene::_OnUpdate(float deltaTime) {
 	if (punAnimation > _PI * 10.f) {
 		punAnimation -= _PI * 10.f;
 	}
+	
 }
 
 static std::wstring toWstring(const std::string& str) {
