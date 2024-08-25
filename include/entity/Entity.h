@@ -10,28 +10,36 @@
 #include "../../include/FSM/StateMachine.h"
 #include "../../include/entity_attr/stats/EntityStatsManager.h"
 #include "../../include/entity_attr/buff/BuffManager.h"
+#include "../../include/render/RenderInfo.h"
+#include "../game/collision/Hitbox.h"
 
-class PEntity
-{
-protected:
+
+class PEntity {
+public:
 	PEntity() = default;
 	~PEntity() = default;
 
 protected:
-	PAnimator anim; //实体动画的管理器
-	PStateMachine stateMachine; //管理实体状态转换的状态机
-	PEntityStatsManager stats; //实体数值的管理器
-	PBuffManager buffs; //实体的Buff管理器
+	PAnimator anim;					//实体动画的管理器
+	PStateMachine stateMachine;		//管理实体状态转换的状态机
+	PEntityStatsManager stats;		//实体数值的管理器
+	PBuffManager buffs;				//实体的Buff管理器
 
-	POINT pos = { 0,0 }; //实体在屏幕上的坐标位置
+	//POINT pos = { 0,0 }; //实体在屏幕上的坐标位置
 
-	int facingDir = 1; //实体朝向，-1左，1右
+	int facingDir = 1;				//实体朝向，-1左，1右
+
+	Hitbox* hb;						//实体碰撞箱
 
 
 public:
-	void SetVelocity(int xVelocity, int yVelocity); //赋予实体以位移速度
+	//void SetVelocity(int xVelocity, int yVelocity); //赋予实体以位移速度
 
-	void Flip(); //实体的贴图转向
+	//void Flip(); //实体的贴图转向
 
-	virtual void Die() = 0; //实体死亡
+	//virtual void Die() = 0; //实体死亡
+
+	virtual void draw(const RenderInfo& renderInfo) = 0;
+
+	virtual void update(float deltaTime) = 0;
 };

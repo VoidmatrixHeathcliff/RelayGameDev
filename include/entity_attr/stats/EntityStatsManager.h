@@ -7,8 +7,7 @@
 #include "../../entity_attr/buff/BuffManager.h"
 
 //封装一个数据类型，方便大家拓展，不喜欢的话删掉也可以（那就记得把Stat都换成int或者size_t）
-class Stat
-{
+class Stat {
 public:
 	Stat(int val) { value = val; }
 	~Stat() = default;
@@ -21,14 +20,15 @@ public:
 	void IncreaseValueBy(int val) { this->value += val; }
 };
 
-#define PENTITY_BASE_HEALTH 20 //基本的生命值
-#define PENTITY_BASE_MOVE_SPEED 10 //基本的移动速度（我没有度量概念，交给写物理系统的同学来修改值）
-#define PENTITY_BASE_JUMP_FORCE 10//基本的跳跃力度
 
-#define PENTITY_GRAVITY 9.8 //重力加速度，不会写物理系统，放个宏在这先（）
 
-class PEntityStatsManager
-{
+inline constexpr int PENTITY_BASE_HEALTH = 20;//基本的生命值
+inline constexpr int PENTITY_BASE_MOVE_SPEED = 10;//基本的移动速度（我没有度量概念，交给写物理系统的同学来修改值）
+inline constexpr int PENTITY_BASE_JUMP_FORCE = 10;//基本的跳跃力度
+inline constexpr float PENTITY_GRAVITY = 9.8f; //重力加速度，不会写物理系统，放个宏在这先（）
+
+
+class PEntityStatsManager {
 public:
 	PEntityStatsManager() = default;
 	~PEntityStatsManager() = default;

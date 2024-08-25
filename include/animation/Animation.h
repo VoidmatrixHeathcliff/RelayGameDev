@@ -10,6 +10,7 @@ template<typename T = int>
 class PAnimation
 {
 public:
+	PAnimation(){}
 	PAnimation(std::string _animName, T _animParm) : animName(_animName), animParm(_animParm) {}
 	~PAnimation() = default;
 

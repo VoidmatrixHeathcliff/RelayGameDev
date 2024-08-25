@@ -1,7 +1,7 @@
 #ifndef _NEW_ANIMATION_H_
 #define _NEW_ANIMATION_H_
 
-#include"timer.h"
+#include"./include/time/Timer.h"
 #include"assets.h"
 #include<vector>
 #include<iostream>
@@ -39,12 +39,12 @@ public:
 		assets_nums = assets_list.size();
 	}
 
-	void on_update(double val)//实时更新
+	void on_update(float val)//实时更新
 	{
 		//Throw_Exception_Window(assets_nums <= 1, L"动画为一帧");
 
-		timer.on_update(val);
-		bool frame_index_check = timer.get_is_shotted();
+		timer.update(val);
+		bool frame_index_check = !timer.isRunning();
 		
 		if (frame_index_check)
 		{

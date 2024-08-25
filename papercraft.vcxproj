@@ -109,7 +109,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>./thirdparty/OpenString-CMake/include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -126,7 +126,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>./thirdparty/OpenString-CMake/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -156,6 +156,9 @@
     <ClCompile Include="source\gui\TextLabel.cpp" />
     <ClCompile Include="source\launcher\Launcher.cpp" />
     <ClCompile Include="source\mic\MCIManager.cpp" />
+    <ClCompile Include="source\scene\GameScene.cpp" />
+    <ClCompile Include="source\scene\LoadScene.cpp" />
+    <ClCompile Include="source\scene\MainScene.cpp" />
     <ClCompile Include="source\String.cpp" />
     <ClCompile Include="source\statusbar\Statusbar.cpp" />
     <ClCompile Include="thirdparty\OpenString-CMake\source\codeunit_sequence.cpp" />
@@ -169,6 +172,7 @@
     <ClInclude Include="include\animation\Animation.h" />
     <ClInclude Include="include\animation\Animator.h" />
     <ClInclude Include="include\assets\AssetManager.h" />
+    <ClInclude Include="include\common\common.h" />
     <ClInclude Include="include\EasyXBase.h" />
     <ClInclude Include="include\entity\animals\Sheep.h" />
     <ClInclude Include="include\entity\Entity.h" />
@@ -181,6 +185,9 @@
     <ClInclude Include="include\FSM\EntityState.h" />
     <ClInclude Include="include\entity_attr\buff\BuffManager.h" />
     <ClInclude Include="include\game\Block.h" />
+    <ClInclude Include="include\game\collision\CollisionLayer.h" />
+    <ClInclude Include="include\game\collision\CollisionManager.h" />
+    <ClInclude Include="include\game\collision\Hitbox.h" />
     <ClInclude Include="include\game\component\Component.h" />
     <ClInclude Include="include\game\Game.h" />
     <ClInclude Include="include\gui\GUIManager.h" />
@@ -188,12 +195,19 @@
     <ClInclude Include="include\gui\ImageLabel.h" />
     <ClInclude Include="include\gui\Input.h" />
     <ClInclude Include="include\gui\ProgressBar.h" />
+    <ClInclude Include="include\gui\Scene.h" />
     <ClInclude Include="include\gui\TextLabel.h" />
     <ClInclude Include="include\launcher\Launcher.h" />
     <ClInclude Include="include\mic\MCIManager.h" />
+    <ClInclude Include="include\render\RenderInfo.h" />
+    <ClInclude Include="include\scene\GameScene.h" />
+    <ClInclude Include="include\scene\LoadScene.h" />
+    <ClInclude Include="include\scene\MainScene.h" />
     <ClInclude Include="include\singleton\Singleton.h" />
     <ClInclude Include="include\String.h" />
     <ClInclude Include="include\statusbar\Statusbar.h" />
+    <ClInclude Include="include\time\Timer.h" />
+    <ClInclude Include="include\vec2\Vec2.h" />
     <ClInclude Include="new_animation.h" />
     <ClInclude Include="thirdparty\mINI\src\mini\ini.h" />
     <ClInclude Include="thirdparty\OpenString-CMake\include\codeunit_sequence.h" />
@@ -213,7 +227,6 @@
     <ClInclude Include="thirdparty\OpenString-CMake\include\unicode.h" />
     <ClInclude Include="thirdparty\OpenString-CMake\include\wide_text.h" />
     <ClInclude Include="throw_ exception.h" />
-    <ClInclude Include="timer.h" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="include\event\Event.h" />
@@ -233,6 +246,9 @@
     <Content Include="thirdparty\OpenString-CMake\OpenString.sln" />
     <Content Include="thirdparty\OpenString-CMake\README.md" />
     <Content Include="thirdparty\OpenString-CMake\xmake.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

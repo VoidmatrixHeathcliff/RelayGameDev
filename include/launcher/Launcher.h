@@ -76,7 +76,7 @@ private:
     PInput        *_playerNameInput;
     PImageLabel   *_background;
     PDevice       *_windowDevice;
-    PGUIManager   *_manager;
+    PGUIManager   *ui;
 
     PAssetManager& _assetManager;
 

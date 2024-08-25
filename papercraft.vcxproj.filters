@@ -74,6 +74,15 @@
     <ClCompile Include="include\entity_attr\buff\Buff_Ignited.h">
       <Filter>include\entity_attr\buff</Filter>
     </ClCompile>
+    <ClCompile Include="source\scene\MainScene.cpp">
+      <Filter>source\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scene\LoadScene.cpp">
+      <Filter>source\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scene\GameScene.cpp">
+      <Filter>source\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="thirdparty\OpenString-CMake\include\wide_text.h">
@@ -223,8 +232,38 @@
     <ClInclude Include="new_animation.h">
       <Filter>include\animation</Filter>
     </ClInclude>
-    <ClInclude Include="timer.h">
+    <ClInclude Include="include\gui\Scene.h">
+      <Filter>include\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\MainScene.h">
+      <Filter>include\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\LoadScene.h">
+      <Filter>include\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\time\Timer.h">
       <Filter>include\time</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\GameScene.h">
+      <Filter>include\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\collision\CollisionManager.h">
+      <Filter>include\game\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vec2\Vec2.h">
+      <Filter>include\vec2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\common\common.h">
+      <Filter>include\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\collision\Hitbox.h">
+      <Filter>include\game\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\collision\CollisionLayer.h">
+      <Filter>include\game\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="include\render\RenderInfo.h">
+      <Filter>include\render</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -294,9 +333,6 @@
     <Filter Include="include\statusbar">
       <UniqueIdentifier>{e81ab1f5-3d2c-4938-871a-67818b35c32a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\time">
-      <UniqueIdentifier>{0e236e69-a93c-448e-9be4-52795bfcda2a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source\statusbar">
       <UniqueIdentifier>{5ef908d1-c960-458d-8764-3cde5f764c11}</UniqueIdentifier>
     </Filter>
@@ -315,9 +351,6 @@
     <Filter Include="include\entity\animals">
       <UniqueIdentifier>{e75c8a87-fa67-44c6-928d-80f550b9a5f3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\entity\mobs">
-      <UniqueIdentifier>{ef9d106d-783e-4209-8bf8-f1b8dffd5c61}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\entity_attr\buff">
       <UniqueIdentifier>{a6cda9a1-094d-4e91-bfb2-0b84282778bc}</UniqueIdentifier>
     </Filter>
@@ -330,5 +363,32 @@
     <Filter Include="tools">
       <UniqueIdentifier>{dbfd1012-e3f2-46e9-9c60-dae83afbc3a1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\scene">
+      <UniqueIdentifier>{ebaacde1-d16f-40c2-90f0-f0f85552e78c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\scene">
+      <UniqueIdentifier>{c97377c7-2afa-4501-b5af-019c48a2feb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\time">
+      <UniqueIdentifier>{0e236e69-a93c-448e-9be4-52795bfcda2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\game\collision">
+      <UniqueIdentifier>{db7ba040-e7f3-4272-a5ad-a0bde39c353f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\vec2">
+      <UniqueIdentifier>{55440393-9594-4c30-ae72-511b9b04af94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\common">
+      <UniqueIdentifier>{b5fbc3f9-d5f2-4053-a352-6a9569ab66ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\render">
+      <UniqueIdentifier>{1570f19b-7958-4c15-a43c-18e46ebbdfc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\entity\mobs">
+      <UniqueIdentifier>{ef9d106d-783e-4209-8bf8-f1b8dffd5c61}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

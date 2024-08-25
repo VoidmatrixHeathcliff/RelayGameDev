@@ -111,14 +111,14 @@ bool PInput::OnMessage(const ExMessage &Message, PGUIMangerInterface* Interface)
                 _inHover = true;
                 
                 HCURSOR crossStyle = LoadCursor(nullptr, IDC_IBEAM);
-                SetClassLongPtr(GetHWnd(), GCLP_HCURSOR, reinterpret_cast<LONG>(crossStyle));
+                SetClassLongPtr(GetHWnd(), GCLP_HCURSOR, static_cast<LONG>(reinterpret_cast<uintptr_t>(crossStyle)));
             }
             if (!IsPointInside(Message.x, Message.y) && _inHover)
             {
                 _inHover = false;
 
                 HCURSOR crossStyle = LoadCursor(nullptr, IDC_ARROW);
-                SetClassLongPtr(GetHWnd(), GCLP_HCURSOR, reinterpret_cast<LONG>(crossStyle));
+                SetClassLongPtr(GetHWnd(), GCLP_HCURSOR, static_cast<LONG>(reinterpret_cast<uintptr_t>(crossStyle)));
             }
                 
             return false;
@@ -150,7 +150,7 @@ bool PInput::OnMessage(const ExMessage &Message, PGUIMangerInterface* Interface)
                 default:
                     if ((_text.size() + 1 < _maxLength) || _maxLength < 0)
                     {
-                        _text.append(Message.ch);
+                        _text.append((char)(Message.ch));
 
                         OnText(_text);
                     }

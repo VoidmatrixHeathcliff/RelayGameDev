@@ -6,6 +6,7 @@
 
 //这里是对于游戏窗口的简单封装
 //如果想自定义加载界面，请修改InitFakeLoadUI函数里的第一行代码
+//更正：请修改LoadScene类
 
 class PGameWindow
 {

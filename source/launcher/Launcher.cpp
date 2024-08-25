@@ -16,7 +16,7 @@ PLanuncher::PLanuncher() : PWindow(400, 600, "PaperCraft Launcher"), _assetManag
 }
 void PLanuncher::InitControl()
 {
-    _manager = new PGUIManager();
+    ui = new PGUIManager();
 
     _gameWindowWidth    = atoi(_config["launcher"]["width"].c_str());
     _gameWindowHeight   = atoi(_config["launcher"]["height"].c_str());
@@ -103,20 +103,20 @@ void PLanuncher::InitControl()
     _sizeUI.emplace_back(_i1280x960);
     _sizeUI.emplace_back(_i640x480);
 
-    _manager->AddObject(_background);
-    _manager->AddObject(_gameScreenText);
-    _manager->AddObject(_gameScreenButton);
-    _manager->AddObject(_playerNameText);
-    _manager->AddObject(_playerNameInput);
-    _manager->AddObject(_launchButton);
-    _manager->AddObject(_windowSizeBackground);
-    _manager->AddObject(_sizeTitleText);
-    _manager->AddObject(_i4096x3112);
-    _manager->AddObject(_i3656x2664);
-    _manager->AddObject(_i2560x1440);
-    _manager->AddObject(_i1920x1080);
-    _manager->AddObject(_i1280x960);
-    _manager->AddObject(_i640x480);
+    ui->AddObject(_background);
+    ui->AddObject(_gameScreenText);
+    ui->AddObject(_gameScreenButton);
+    ui->AddObject(_playerNameText);
+    ui->AddObject(_playerNameInput);
+    ui->AddObject(_launchButton);
+    ui->AddObject(_windowSizeBackground);
+    ui->AddObject(_sizeTitleText);
+    ui->AddObject(_i4096x3112);
+    ui->AddObject(_i3656x2664);
+    ui->AddObject(_i2560x1440);
+    ui->AddObject(_i1920x1080);
+    ui->AddObject(_i1280x960);
+    ui->AddObject(_i640x480);
 }
 void PLanuncher::SetI4096x3112()
 {
@@ -147,7 +147,7 @@ void PLanuncher::SetI3656x2664()
     _config["launcher"]["height"] = std::to_string(_gameWindowHeight);
     _configFile->write(_config);
 
-    _manager->UnfocusObject(nullptr);
+    ui->UnfocusObject(nullptr);
     
     for (auto& object : _sizeUI)
     {
@@ -169,7 +169,7 @@ void PLanuncher::SetI2560x1440()
     _config["launcher"]["height"] = std::to_string(_gameWindowHeight);
     _configFile->write(_config);
 
-    _manager->UnfocusObject(nullptr);
+    ui->UnfocusObject(nullptr);
 
     for (auto& object : _sizeUI)
     {
@@ -191,7 +191,7 @@ void PLanuncher::SetI1920x1080()
     _config["launcher"]["height"] = std::to_string(_gameWindowHeight);
     _configFile->write(_config);
 
-    _manager->UnfocusObject(nullptr);
+    ui->UnfocusObject(nullptr);
 
     for (auto& object : _sizeUI)
     {
@@ -213,7 +213,7 @@ void PLanuncher::SetI1280x960()
     _config["launcher"]["height"] = std::to_string(_gameWindowHeight);
     _configFile->write(_config);
 
-    _manager->UnfocusObject(nullptr);
+    ui->UnfocusObject(nullptr);
 
     for (auto& object : _sizeUI)
     {
@@ -235,7 +235,7 @@ void PLanuncher::SetI640x480()
     _config["launcher"]["height"] = std::to_string(_gameWindowHeight);
     _configFile->write(_config);
 
-    _manager->UnfocusObject(nullptr);
+    ui->UnfocusObject(nullptr);
 
     for (auto& object : _sizeUI)
     {
@@ -276,12 +276,12 @@ void PLanuncher::Loop()
         ExMessage message;
         while (peekmessage(&message))
         {
-            _manager->OnMessage(message);
+            ui->OnMessage(message);
         }
             
         cleardevice();
             
-        _manager->OnDraw(_windowDevice);
+        ui->OnDraw(_windowDevice);
         _windowDevice->Flush();
             
         Sleep(16);

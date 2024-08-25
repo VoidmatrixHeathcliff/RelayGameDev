@@ -8,6 +8,7 @@
 class PEntityState
 {
 public:
+	PEntityState(){}
 	PEntityState(PAnimation<> _animation) : animation(_animation) {}
 	~PEntityState() = default;
 

@@ -3,8 +3,6 @@
 //
 #pragma once
 
-#define PENTITY_BASE_BUFF_DURATION 5.0 //基础的Buff持续时间
-
 class PBuff
 {
 public:
@@ -12,5 +10,7 @@ public:
 	~PBuff() = default;
 
 protected:
+	static constexpr float PENTITY_BASE_BUFF_DURATION = 5.0;
+
 	float duration = PENTITY_BASE_BUFF_DURATION; //Buff的持续时长
 };
