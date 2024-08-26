@@ -268,6 +268,21 @@
     <ClInclude Include="make3d.h">
       <Filter>include\make3d</Filter>
     </ClInclude>
+    <ClInclude Include="include\beg\Beg.h">
+      <Filter>include\beg</Filter>
+    </ClInclude>
+    <ClInclude Include="include\beg\Content.h">
+      <Filter>include\beg</Filter>
+    </ClInclude>
+    <ClInclude Include="include\beg\Hand.h">
+      <Filter>include\beg</Filter>
+    </ClInclude>
+    <ClInclude Include="include\beg\Weapon.h">
+      <Filter>include\beg</Filter>
+    </ClInclude>
+    <ClInclude Include="include\beg\Inventory.h">
+      <Filter>include\beg</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="thirdparty">
@@ -392,6 +407,9 @@
     </Filter>
     <Filter Include="include\make3d">
       <UniqueIdentifier>{7bf9e680-77cb-4906-b146-2e3bc5262891}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\beg">
+      <UniqueIdentifier>{d5f6c8c6-7fec-4e1b-a120-9b807fc16b55}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -7,6 +7,7 @@
 
 //？我只进行了图片的加载
 
+#include"../beg/Beg.h"
 #include "../../include/entity/Entity.h"
 #include"../../new_animation.h"
 #include"../game/collision/CollisionManager.h"
@@ -101,7 +102,16 @@ public:
 	Stat get_move_speed()const {
 		return stats.moveSpeed;
 	}
+	bool catch_content(PContent* thing)
+	{
+		if (beg.Can_Add() == false)
+			return false;
+		beg.Add(thing);
+		return true;
+	}
 	void onMessage(const ExMessage& msg) {
+			beg.On_Message(msg);
+			on_hand = beg.Get_On_Hand();
 		//todo
 		switch (msg.message) {
 			case WM_KEYDOWN:
@@ -165,8 +175,18 @@ public:
 					  (int)(scale * hb->position.y),
 					  (int)(scale * (hb->position.x + hb->size.x)),
 					  (int)(scale * (hb->position.y + hb->size.y)));
+		beg.On_Draw();
+		if(on_hand)
+		on_hand->OnDraw();
 	}
-
+	Hitbox* get_hb()
+	{
+		return this->hb;
+	}
+	bool is_on_beg()
+	{
+		return beg.Is_Show();
+	}
 	void update(float deltatime) override {
 		if (isJumping) {
 			hb->velocity.y = -jumpForce; // 设置垂直速度为跳跃力量
@@ -198,6 +218,8 @@ protected:
 	std::unordered_map<PlayerAssets, PAssets*>body_assets;		//身体图集
 	std::unordered_map<PlayerAssets, PAssets*>arm_assets;		//胳膊图集
 	PAssets* sleep = nullptr;			//睡觉图片
+	PContent* on_hand= &Singleton<Hand>::instance();
+	Beg beg;
 };
 
 #endif // !_PLAYER_H_

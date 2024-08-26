@@ -1,5 +1,6 @@
 #include"../../include/scene/GameScene.h"
 #include"../../include/game/collision/CollisionManager.h"
+#include"../beg/Weapon.h"
 
 void GameScene::_OnMessage(ExMessage& Message) {
 	player->onMessage(Message);
@@ -15,6 +16,8 @@ void GameScene::_OnDraw(PDevice* Device) {
 }
 
 void GameScene::_OnUpdate(float deltaTime) {
+	if (player->is_on_beg())
+		return;
 	PGetSingleton<CollisionManager>().step(deltaTime);		//更新物理模拟
 	player->update(deltaTime);
 }

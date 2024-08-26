@@ -172,6 +172,11 @@
     <ClInclude Include="include\animation\Animation.h" />
     <ClInclude Include="include\animation\Animator.h" />
     <ClInclude Include="include\assets\AssetManager.h" />
+    <ClInclude Include="include\beg\Beg.h" />
+    <ClInclude Include="include\beg\Content.h" />
+    <ClInclude Include="include\beg\Hand.h" />
+    <ClInclude Include="include\beg\Inventory.h" />
+    <ClInclude Include="include\beg\Weapon.h" />
     <ClInclude Include="include\common\common.h" />
     <ClInclude Include="include\EasyXBase.h" />
     <ClInclude Include="include\entity\animals\Sheep.h" />

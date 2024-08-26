@@ -34,7 +34,6 @@ class PGUIObject
 public:
     PGUIObject();
     virtual ~PGUIObject() = default;
-
 public:
     /// When the object was on drawing this function will be called
     virtual void OnDraw() = 0;
