@@ -18,6 +18,7 @@
 #include "../scene/MainScene.h"
 #include "../scene/LoadScene.h"
 #include "../scene/GameScene.h"
+#include "../scene/FishingScene.h"
 
 
 /// The main window
@@ -47,4 +48,5 @@ private:
     LoadScene* loadScene;
     GameScene* gameScene;
     PScene* currentScene;
+    PScene* fishingScene;
 };

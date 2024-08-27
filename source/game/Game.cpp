@@ -14,6 +14,7 @@ PLGame::PLGame(const int& Width, const int& Height, const PString& PlayerName)
 	mainScene = new MainScene();
 	loadScene = new LoadScene();
 	gameScene = new GameScene();
+	fishingScene = new FishingScene();
 
 	loadScene->SetCustomCallback([this] {
 		SetCurrentScene(mainScene);
@@ -52,9 +53,17 @@ void PLGame::Loop() {
 
 
 	while (true) {
+
 		//handle message
 		ExMessage message;
 		while (peekmessage(&message)) {
+			if (message.message==WM_KEYDOWN&&message.vkcode == 0x46)//F: 这样写的主要是想要能在任意场景按F都可以立即开始钓鱼并且不影响当前场景,希望后面的同学不要怪我，我真不知道咋办了555555
+			{
+				PScene* a = currentScene;
+				currentScene = fishingScene;
+				fishingScene = a;
+			}
+
 			currentScene->OnMessage(message);
 		}
 
@@ -63,6 +72,8 @@ void PLGame::Loop() {
 		std::chrono::duration<float> dt = currentTime - previousTime;
 		previousTime = currentTime;
 		float deltaTime = std::min(dt.count(), 0.1f);
+
+	
 		
 		//update
 		currentScene->OnUpdate(deltaTime);
@@ -70,6 +81,10 @@ void PLGame::Loop() {
 		//render
 		cleardevice();
 		currentScene->OnDraw(_windowDevice);
+
+		
+
+		
 
 	#ifdef _DEBUG
 		settextstyle(&debugFont);
@@ -90,7 +105,6 @@ void PLGame::Loop() {
 
 		_windowDevice->Flush();
 
-		//Sleep(1);
 	}
 }
 

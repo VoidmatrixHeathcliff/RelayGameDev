@@ -74,13 +74,16 @@
     <ClCompile Include="include\entity_attr\buff\Buff_Ignited.h">
       <Filter>include\entity_attr\buff</Filter>
     </ClCompile>
-    <ClCompile Include="source\scene\MainScene.cpp">
-      <Filter>source\scene</Filter>
-    </ClCompile>
     <ClCompile Include="source\scene\LoadScene.cpp">
       <Filter>source\scene</Filter>
     </ClCompile>
     <ClCompile Include="source\scene\GameScene.cpp">
+      <Filter>source\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scene\MainScene.cpp">
+      <Filter>source\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="FishScene.cpp">
       <Filter>source\scene</Filter>
     </ClCompile>
   </ItemGroup>
@@ -158,9 +161,6 @@
       <Filter>include\gui</Filter>
     </ClInclude>
     <ClInclude Include="include\gui\GUIObject.h">
-      <Filter>include\gui</Filter>
-    </ClInclude>
-    <ClInclude Include="include\gui\ImageLabel.h">
       <Filter>include\gui</Filter>
     </ClInclude>
     <ClInclude Include="include\gui\Input.h">
@@ -282,6 +282,12 @@
     </ClInclude>
     <ClInclude Include="include\beg\Inventory.h">
       <Filter>include\beg</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\FishingScene.h">
+      <Filter>include\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gui\ImageLabel.h">
+      <Filter>include\launcher</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

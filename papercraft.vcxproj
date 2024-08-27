@@ -70,6 +70,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>...\include\scene;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -137,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FishScene.cpp" />
     <ClCompile Include="include\entity\animals\Animal.h" />
     <ClCompile Include="include\entity_attr\buff\Buff_Ignited.h" />
     <ClCompile Include="include\FSM\player\PlayerState.h" />
@@ -205,6 +209,7 @@
     <ClInclude Include="include\launcher\Launcher.h" />
     <ClInclude Include="include\mic\MCIManager.h" />
     <ClInclude Include="include\render\RenderInfo.h" />
+    <ClInclude Include="include\scene\FishingScene.h" />
     <ClInclude Include="include\scene\GameScene.h" />
     <ClInclude Include="include\scene\LoadScene.h" />
     <ClInclude Include="include\scene\MainScene.h" />
