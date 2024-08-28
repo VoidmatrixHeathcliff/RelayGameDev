@@ -39,7 +39,28 @@ public:
 
 	//virtual void Die() = 0; //实体死亡
 
+	//是否存活
+	bool isAlive() {
+		return stats.currentHealth.GetValue() > 0;
+		
+	}
+
+	//获取当前血量
+	int GetHealth() {
+		return stats.currentHealth.GetValue();
+	}
+
+	//修改血量
+	virtual void changeHealth(int x) {
+		stats.currentHealth.SetValue(stats.currentHealth.GetValue() + x);
+		if (stats.currentHealth.GetValue() > stats.maxHealth.GetValue())
+			stats.currentHealth.SetValue(stats.maxHealth.GetValue());//如果当前血量超过最大血量则当前血量为最大血量
+	}
+
+
 	virtual void draw(const RenderInfo& renderInfo) = 0;
 
-	virtual void update(float deltaTime) = 0;
+	virtual void update(float deltaTime) {
+		buffs.CheckBuffs(this);//实时更新实体的Buff
+	}
 };

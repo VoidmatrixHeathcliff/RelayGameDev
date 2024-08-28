@@ -30,6 +30,7 @@ PLGame::~PLGame() {
 	delete mainScene;
 	delete loadScene;
 	delete gameScene;
+	delete fishingScene;
 }
 
 void PLGame::Loop() {

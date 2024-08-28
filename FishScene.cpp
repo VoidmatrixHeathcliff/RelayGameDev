@@ -1,4 +1,5 @@
-#include "../scene/FishingScene.h"
+//#include "../scene/FishingScene.h"
+#include "../../../include/scene/FishingScene.h"
 #include "iostream"
 
 void FishingScene::_OnMessage(ExMessage& Message)

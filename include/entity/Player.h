@@ -200,19 +200,18 @@ public:
 		if (run) speed *= runfast;
 		hb->velocity.x = speed ;
 
-		
 	}
 
 protected:
 	bool isMovingLeft = false;		//是否向左走
 	bool isMovingRight = false;		//是否向右走
 
-	bool isJumping = false;       // 是否正在跳跃
-	bool isGrounded = true;       // 是否在地面上，需要碰撞层回调检测才能实现
-	float jumpForce = 10.0f;      // 跳跃力量
+	bool isJumping = false;			// 是否正在跳跃
+	bool isGrounded = true;			// 是否在地面上，需要碰撞层回调检测才能实现
+	float jumpForce = 10.0f;		// 跳跃力量
 
-	bool run = false;                // 是否奔跑
-	float runfast = 2.5f;          // 奔跑速度
+	bool run = false;				// 是否奔跑
+	float runfast = 2.5f;			// 奔跑速度
 
 	std::unordered_map<PlayerAssets, PAssets*>head_assets;		//头图集
 	std::unordered_map<PlayerAssets, PAssets*>body_assets;		//身体图集

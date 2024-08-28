@@ -32,7 +32,7 @@ class PEntityStatsManager {
 public:
 	PEntityStatsManager() = default;
 	~PEntityStatsManager() = default;
-
+	
 public:
 	Stat maxHealth = Stat(PENTITY_BASE_HEALTH); //实体初始最大血量
 	Stat currentHealth = maxHealth; //实体当前血量

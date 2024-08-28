@@ -1,7 +1,7 @@
+#include"../../include/game/Block.h"
 #include"../../include/scene/GameScene.h"
 #include"../../include/game/collision/CollisionManager.h"
-#include"../beg/Weapon.h"
-
+#include"../../../include/beg/Weapon.h"
 void GameScene::_OnMessage(ExMessage& Message) {
 	player->onMessage(Message);
 }
@@ -20,6 +20,9 @@ void GameScene::_OnUpdate(float deltaTime) {
 		return;
 	PGetSingleton<CollisionManager>().step(deltaTime);		//更新物理模拟
 	player->update(deltaTime);
+	if (!player->isAlive()) {								//如果玩家死亡（待写逻辑{如跳转场景}）
+
+	}
 }
 
 void GameScene::_OnEnter() {
@@ -27,20 +30,19 @@ void GameScene::_OnEnter() {
 }
 
 GameScene::GameScene() {
-	blocks.push_back(new PBlock(nullptr, { 5.f,5.f }));
-	blocks.push_back(new PBlock(nullptr, { 4.f,5.f }));
-	blocks.push_back(new PBlock(nullptr, { 3.f,5.f }));
-	blocks.push_back(new PBlock(nullptr, { 6.f,5.f }));
-	blocks.push_back(new PBlock(nullptr, { 7.f,5.f }));
-	blocks.push_back(new PBlock(nullptr, { 8.f,5.f }));
+	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/end_bricks.png"), {5.f, 5.f}));
+	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/end_bricks.png"), { 4.f,5.f }));
+	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/end_bricks.png"), { 3.f,5.f }));
+	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/end_bricks.png"), { 6.f,5.f }));
+	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/end_bricks.png"), { 7.f,5.f }));
+	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/end_bricks.png"), { 8.f,5.f }));
 
-
-	blocks.push_back(new PBlock(nullptr, { 5.f,10.f }));
-	blocks.push_back(new PBlock(nullptr, { 9.f,10.f }));
-	blocks.push_back(new PBlock(nullptr, { 10.f,10.f }));
-	blocks.push_back(new PBlock(nullptr, { 6.f,10.f }));
-	blocks.push_back(new PBlock(nullptr, { 7.f,10.f }));
-	blocks.push_back(new PBlock(nullptr, { 8.f,10.f }));
+	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/wool_colored_gray.png"), { 5.f,10.f }));
+	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/wool_colored_gray.png"), { 9.f,10.f }));
+	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/wool_colored_gray.png"), { 10.f,10.f }));
+	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/wool_colored_gray.png"), { 6.f,10.f }));
+	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/wool_colored_gray.png"), { 7.f,10.f }));
+	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/wool_colored_gray.png"), { 8.f,10.f }));
 
 	player = new PPlayer();
 

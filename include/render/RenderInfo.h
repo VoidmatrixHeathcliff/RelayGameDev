@@ -7,5 +7,5 @@ struct RenderInfo {
 	Vec2 windowSize;
 	Vec2 cameraPosition;
 	PDevice* device;
-	float scale;		//temporary
+	float scale;		//temporary£¨ÔÝÊ±µÄ£©
 };
