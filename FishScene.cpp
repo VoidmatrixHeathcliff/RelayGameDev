@@ -57,6 +57,11 @@ void FishingScene::_OnUpdate(float deltaTime)
 		}
 		fishPoint = path[index];
 		currentFishImage->Move(fishPoint.x, fishPoint.y);
+		if (current_fishing_state==FishingState::SavingYourLive)
+		{
+			if (currentFishType == FishType::flyingfish)
+				is_saved = HasSaved::Successed;
+		}
 	}
 }
 

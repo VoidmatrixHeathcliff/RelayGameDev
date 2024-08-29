@@ -40,9 +40,8 @@ public:
 	//virtual void Die() = 0; //实体死亡
 
 	//是否存活
-	bool isAlive() {
+	virtual bool isAlive() {
 		return stats.currentHealth.GetValue() > 0;
-		
 	}
 
 	//获取当前血量

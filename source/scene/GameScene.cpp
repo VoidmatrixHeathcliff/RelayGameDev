@@ -20,8 +20,15 @@ void GameScene::_OnUpdate(float deltaTime) {
 		return;
 	PGetSingleton<CollisionManager>().step(deltaTime);		//更新物理模拟
 	player->update(deltaTime);
-	if (!player->isAlive()) {								//如果玩家死亡（待写逻辑{如跳转场景}）
+	if (!player->isAlive() && player->get_player_state() == PlayerState::Alive) {
+		player->set_player_state(PlayerState::Dying);
+	}
+}
 
+void GameScene::_OnExit() {
+	if (player->get_player_state() == PlayerState::Dead)
+	{
+		//TODO 玩家死透了
 	}
 }
 
@@ -54,4 +61,14 @@ GameScene::~GameScene() {
 		delete block;
 	}
 	delete player;
+}
+
+PlayerState GameScene::get_player_state()
+{
+	return player->get_player_state();
+}
+
+PPlayer*& GameScene::get_player()
+{
+	return player;
 }

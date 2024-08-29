@@ -5,6 +5,7 @@
 #include "unordered_map"
 #include "../gui/ImageLabel.h"
 #include "../../include/mic/MCIManager.h"
+#include "../../../include/scene/GameScene.h"
 #include "iostream"
 #include "string"
 
@@ -22,6 +23,18 @@ enum class FishType
 	flyingfish
 };
 
+enum class FishingState
+{
+	Play,
+	SavingYourLive
+};
+
+enum class HasSaved
+{
+	None,
+	Failed,
+	Successed
+};
 
 class FishingScene :public PScene
 {
@@ -359,16 +372,19 @@ public:
 		if (!flag)
 		{
 			std::cout << "Ã»µöµ½" << std::endl;
+			is_saved = HasSaved::Failed;
 			isFishing = false;
 			return;
 		}
 		if (distance(fishingPoint, fishPoint) < 40)
 		{
 			std::cout << "µöµ½¿©"<<name << std::endl;
+			currentFishType = lastFishType;
 		}
 		else
 		{
 			std::cout << "Ã»µöµ½" << std::endl;
+			is_saved = HasSaved::Failed;
 		}
 		isFishing = false;
 	}
@@ -380,29 +396,31 @@ public:
 		if (a == 1)
 		{
 			name = "·ÉÓãÍè!!!!!!!!!!!!!!";
+			lastFishType = FishType::flyingfish;
 			return fishPool.find(FishType::flyingfish)->second;
 		}
 		else if (a == 2 || a == 3)
 		{
 			name = "ºÓëà";
+			lastFishType = FishType::pufferfish;
 			return fishPool.find(FishType::pufferfish)->second;
 		}
 		else if (a == 4 || a == 5)
 		{
 			name = "Ð¡³óÓã";
-
+			lastFishType = FishType::clownfish;
 			return fishPool.find(FishType::clownfish)->second;
 		}
 		else if (a == 6 || a == 7 || a == 8)
 		{
 			name = "öêÓã";
-
+			lastFishType = FishType::salmon;
 			return fishPool.find(FishType::salmon)->second;
 		}
 		else
 		{
 			name = "÷¨Óã";
-
+			lastFishType = FishType::cod;
 			return fishPool.find(FishType::cod)->second;
 		}
 	}
@@ -421,6 +439,10 @@ public:
 		return randomPoint;
 	}
 
+	FishType get_current_fish_type() { return currentFishType; }
+	HasSaved get_is_saved() { return is_saved; }
+	void set_fishing_state(FishingState Fs) { current_fishing_state = Fs; }
+
 private:
 	Point textPoint;
     Point fishingPoint;
@@ -436,4 +458,8 @@ private:
 	std::string name;
 
 	PImageLabel* currentFishImage;
+	FishType currentFishType;
+	FishType lastFishType;
+	FishingState current_fishing_state = FishingState::Play;
+	HasSaved is_saved = HasSaved::None;
 };

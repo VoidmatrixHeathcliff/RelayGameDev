@@ -34,6 +34,13 @@ enum class PlayerAssets {
 	SLEEP
 };
 
+enum class PlayerState
+{
+	Alive = 0,	// 活着
+	Dying,		// 濒死
+	Dead		// 死透了
+};
+
 class PPlayer :public PEntity {
 public:
 	//该函数建议放在构造函数中，但因层层封装无法调用该类的构造函数
@@ -188,7 +195,7 @@ public:
 		return beg.Is_Show();
 	}
 	void update(float deltatime) override {
-		if (isJumping) {
+		if (isJumping && isGrounded) {
 			hb->velocity.y = -jumpForce; // 设置垂直速度为跳跃力量
 			isJumping = false;
 		}
@@ -201,6 +208,14 @@ public:
 		hb->velocity.x = speed ;
 
 	}
+	bool isAlive() override
+	{
+		static const Vec2& pos = this->get_hb()->position;
+		static const Vec2& size = this->get_hb()->size;
+		return this->get_currentHealth().GetValue() > 0 && pos.y + size.y < 35.0f;
+	}
+	PlayerState get_player_state() { return state; }
+	void set_player_state(PlayerState player_state) { state = player_state; }
 
 protected:
 	bool isMovingLeft = false;		//是否向左走
@@ -219,6 +234,7 @@ protected:
 	PAssets* sleep = nullptr;			//睡觉图片
 	PContent* on_hand= &Singleton<Hand>::instance();
 	Beg beg;
+	PlayerState state = PlayerState::Alive;
 };
 
 #endif // !_PLAYER_H_

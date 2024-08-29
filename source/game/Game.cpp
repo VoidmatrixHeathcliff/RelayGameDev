@@ -54,11 +54,28 @@ void PLGame::Loop() {
 
 
 	while (true) {
+		if (gameScene->get_player_state() == PlayerState::Dying)
+		{
+			FishingScene* fs = (FishingScene*)fishingScene;
+			fs->set_fishing_state(FishingState::SavingYourLive);
+			SwitchToFishingScene();
+			if (fs->get_is_saved() == HasSaved::Successed)
+			{
+				gameScene->get_player()->set_player_state(PlayerState::Alive);
+				SwitchToGameScene();
+			}
+			else if (fs->get_is_saved() == HasSaved::Failed)
+			{
+				gameScene->get_player()->set_player_state(PlayerState::Dead);
+				SwitchToMainScene();
+			}
+
+		}
 
 		//handle message
 		ExMessage message;
 		while (peekmessage(&message)) {
-			if (message.message==WM_KEYDOWN&&message.vkcode == 0x46)//F: 这样写的主要是想要能在任意场景按F都可以立即开始钓鱼并且不影响当前场景,希望后面的同学不要怪我，我真不知道咋办了555555
+			if (message.message == WM_KEYDOWN && message.vkcode == 0x46 && currentScene != fishingScene)//F: 这样写的主要是想要能在任意场景按F都可以立即开始钓鱼并且不影响当前场景,希望后面的同学不要怪我，我真不知道咋办了555555
 			{
 				PScene* a = currentScene;
 				currentScene = fishingScene;
@@ -74,7 +91,7 @@ void PLGame::Loop() {
 		previousTime = currentTime;
 		float deltaTime = std::min(dt.count(), 0.1f);
 
-	
+		
 		
 		//update
 		currentScene->OnUpdate(deltaTime);
@@ -124,4 +141,8 @@ void PLGame::SwitchToGameScene() {
 
 void PLGame::SwitchToMainScene() {
 	SetCurrentScene(mainScene);
+}
+
+void PLGame::SwitchToFishingScene() {
+	SetCurrentScene(fishingScene);
 }

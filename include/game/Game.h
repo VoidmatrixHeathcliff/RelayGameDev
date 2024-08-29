@@ -36,6 +36,7 @@ public:
     void SetCurrentScene(PScene* scene);
     void SwitchToGameScene();
     void SwitchToMainScene();
+    void SwitchToFishingScene();
 
 private:
     PString _playerName;
