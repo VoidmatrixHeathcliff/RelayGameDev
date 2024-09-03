@@ -115,7 +115,7 @@ public:
 		}
 	}
 protected:
-	//contents in beg
+	//contents in bag
 	std::vector<PContent*>contents;
 	int row=9;
 	int column=9;

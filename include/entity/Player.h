@@ -111,14 +111,14 @@ public:
 	}
 	bool catch_content(PContent* thing)
 	{
-		if (beg.Can_Add() == false)
+		if (bag.Can_Add() == false)
 			return false;
-		beg.Add(thing);
+		bag.Add(thing);
 		return true;
 	}
 	void onMessage(const ExMessage& msg) {
-			beg.On_Message(msg);
-			on_hand = beg.Get_On_Hand();
+			bag.On_Message(msg);
+			on_hand = bag.Get_On_Hand();
 		//todo
 		switch (msg.message) {
 			case WM_KEYDOWN:
@@ -136,8 +136,11 @@ public:
 						isMovingRight = true;
 						break;
 					case 0x57:
-						//if(isGrounded)//需要碰撞层回调检测才能实现
-						isJumping = true;
+						if (isGrounded)
+						{
+							isJumping = true;
+							isGrounded = false;
+						}
 						break;
 					case 0x4D:
 						//todo M
@@ -163,7 +166,8 @@ public:
 		}
 	}
 
-	PPlayer() :PEntity() {
+	PPlayer() :PEntity()
+	{
 		hb = PGetSingleton<CollisionManager>().createHitbox();
 		hb->size = { 0.8f,1.5f };
 		hb->position = { 5.f,0.f };
@@ -171,7 +175,12 @@ public:
 		hb->addLayerDst(CollisionLayer::BlockLayer);
 		hb->addLayerDst(CollisionLayer::EnemyLayer);
 		hb->layerSrc = CollisionLayer::PlayerLayer;
+
+		//妥协用的地面检测
+		before_position_y = hb->position.y;
+		//hb->setOnCollide([&]() { isGrounded = true; });
 	}
+
 
 	void draw(const RenderInfo& renderInfo)override {
 		setfillcolor(RGB(200, 0, 0));
@@ -182,7 +191,7 @@ public:
 					  (int)(scale * hb->position.y),
 					  (int)(scale * (hb->position.x + hb->size.x)),
 					  (int)(scale * (hb->position.y + hb->size.y)));
-		beg.On_Draw();
+		bag.On_Draw();
 		if(on_hand)
 		on_hand->OnDraw();
 	}
@@ -192,10 +201,18 @@ public:
 	}
 	bool is_on_beg()
 	{
-		return beg.Is_Show();
+		return bag.Is_Show();
 	}
 	void update(float deltatime) override {
-		if (isJumping && isGrounded) {
+
+		//妥协用的地面检测
+		if (hb->position.y == before_position_y)
+		{
+			isGrounded = true;
+		}
+			
+		before_position_y = hb->position.y;
+		if (isJumping) {
 			hb->velocity.y = -jumpForce; // 设置垂直速度为跳跃力量
 			isJumping = false;
 		}
@@ -206,6 +223,7 @@ public:
 		if (isMovingRight) speed += 2.f;
 		if (run) speed *= runfast;
 		hb->velocity.x = speed ;
+
 
 	}
 	bool isAlive() override
@@ -221,9 +239,16 @@ protected:
 	bool isMovingLeft = false;		//是否向左走
 	bool isMovingRight = false;		//是否向右走
 
+	///////////////////////////////////////////////////// 
+	/// 妥协用的检测是否在地面上的参数，如果有更好的可以优化掉
+	//先前的位置y，用于判断是否在地面上，如果两次更新y轴位置不变，则认为在
+	//地面上(实际上，如果是在跳跃的最高点，也可能出现多次y轴位置不变的情况)
+	float before_position_y;	
+	///////////////////////////////////////////////////// 
+
 	bool isJumping = false;			// 是否正在跳跃
 	bool isGrounded = true;			// 是否在地面上，需要碰撞层回调检测才能实现
-	float jumpForce = 10.0f;		// 跳跃力量
+	float jumpForce = 5.0f;		// 跳跃力量
 
 	bool run = false;				// 是否奔跑
 	float runfast = 2.5f;			// 奔跑速度
@@ -233,8 +258,9 @@ protected:
 	std::unordered_map<PlayerAssets, PAssets*>arm_assets;		//胳膊图集
 	PAssets* sleep = nullptr;			//睡觉图片
 	PContent* on_hand= &Singleton<Hand>::instance();
-	Beg beg;
+	Bag bag;
 	PlayerState state = PlayerState::Alive;
 };
+
 
 #endif // !_PLAYER_H_

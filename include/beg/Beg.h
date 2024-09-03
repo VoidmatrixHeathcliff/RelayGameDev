@@ -216,7 +216,7 @@ public:
 		return contents[on_hand];
 	}
 protected:
-	//contents in beg
+	//contents in bag
 	std::vector<PContent*>contents;
 	//std::vector<PContent*>inventory;
 	int row=9;
@@ -227,3 +227,5 @@ protected:
 	int on_hand = 0;
 	POINT mouse_pos = { 0 };
 };
+
+typedef Beg Bag;

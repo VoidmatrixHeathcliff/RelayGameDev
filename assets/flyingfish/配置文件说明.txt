@@ -1,0 +1,8 @@
+	FishType type;								//鱼的类型(不能重复)
+	int power;									//鱼出现的权重
+	float velocity;								//鱼游动的速度
+	float angle;								//鱼游动转向的角度（角度）
+	std::string name;							//鱼的名称(未解决的问题：中文是乱码)
+	PImageLabel* image;						//鱼的图片
+	FishFlag special_flag = FishFlag::none;			//特殊的鱼标志
+每一个参数用‘,’进行分割，每一组由换行进行区分，没有对数据有效性进行验证，请注意

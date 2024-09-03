@@ -1,7 +1,7 @@
 #pragma once
 #include"../gui/GUIObject.h"
 #include"../entity/Player.h"
-//content in beg
+//content in bag
 class PContent :public PGUIObject
 {
 public:
@@ -17,7 +17,7 @@ public:
 	{
 		return false;
 	}
-	//the image you show in beg
+	//the image you show in bag
 	virtual void On_Show(double x, double y)
 	{
 

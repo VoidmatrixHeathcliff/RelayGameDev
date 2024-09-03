@@ -78,7 +78,9 @@ void PLGame::Loop() {
 			if (message.message == WM_KEYDOWN && message.vkcode == 0x46 && currentScene != fishingScene)//F: 这样写的主要是想要能在任意场景按F都可以立即开始钓鱼并且不影响当前场景,希望后面的同学不要怪我，我真不知道咋办了555555
 			{
 				PScene* a = currentScene;
+				currentScene->OnExit();
 				currentScene = fishingScene;
+				currentScene->OnEnter();
 				fishingScene = a;
 			}
 
