@@ -101,6 +101,10 @@ private:
 	}
 
 	~CollisionManager() {
+		for (Hitbox* hb : hitboxList) {
+			delete hb; // ÊÍ·ÅÄÚ´æ  
+		}
+		hitboxList.clear();
 		//TODO
 	}
 
