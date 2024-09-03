@@ -18,6 +18,7 @@ protected:
 	virtual ~Singleton() = default;
 
 public:
+	//唯一的单例调用方式
 	static Type& instance() {
 		static Type _instance;
 		return _instance;

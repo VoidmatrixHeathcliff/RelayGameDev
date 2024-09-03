@@ -1,22 +1,23 @@
-#ifndef _ZHook_H_
+ï»¿#ifndef _ZHook_H_
 #define _ZHook_H_
 
 #include "Entity.h"
 #include <cmath>
 
 /*
-	ÊÊÓÃÓÚ ZFishingScene µÄÓã¹³Àà¡£
+	é€‚ç”¨äº ZFishingScene çš„é±¼é’©ç±»ã€‚
 
-	ÔÚĞ´ÍêPAnimationÀàºó·¢ÏÖ×´Ì¬»úÀàÒ²²»ÄÜÖ±½ÓÊ¹ÓÃ¡£
-	ÊµÔÚÃ»ÓĞÊ±¼äÁË¾ÍÖ»ÄÜÁÙÊ±¸øËüĞ´ÁË¸öÀà×´Ì¬»ú Êµ¼ÊÉÏÊÇÓÃ if else Ç¶Ì×µÄ·½·¨¡£
+	åœ¨å†™å®ŒPAnimationç±»åå‘ç°çŠ¶æ€æœºç±»ä¹Ÿä¸èƒ½ç›´æ¥ä½¿ç”¨ã€‚
+	å®åœ¨æ²¡æœ‰æ—¶é—´äº†å°±åªèƒ½ä¸´æ—¶ç»™å®ƒå†™äº†ä¸ªç±»çŠ¶æ€æœº å®é™…ä¸Šæ˜¯ç”¨ if else åµŒå¥—çš„æ–¹æ³•ã€‚
 */
 class ZHook : public PEntity {
 public:
 	enum class ZHookState
 	{
-		Idle,			// ÏĞÖÃ×´Ì¬£¬¹³×ÓĞı×ª
-		Chase,			// ×·Öğ×´Ì¬£¬¹³×ÓÍùÇ°Ñ°ÕÒÓã
-		Retract			// »ØÊÕ×´Ì¬£¬¹³×ÓÊÕ»Ø
+		Idle,			// é—²ç½®çŠ¶æ€ï¼Œé’©å­æ—‹è½¬
+		Chase,			// è¿½é€çŠ¶æ€ï¼Œé’©å­å¾€å‰å¯»æ‰¾é±¼
+		Retract,		// æŠ“åˆ°ğŸŸå›æ”¶çŠ¶æ€ï¼Œé’©å­æ”¶å›
+		Retract_empty   // æ²¡æŠ“åˆ°ğŸŸçš„å›æ”¶
 	};
 
 public:
@@ -28,39 +29,70 @@ public:
 	void update(float deltaTime) override;
 
 public:
-	/* ÉèÖÃµ±Ç°µÄ×´Ì¬¡£ */
+	/* è®¾ç½®å½“å‰çš„çŠ¶æ€ã€‚ */
 	void setCurrentState(ZHookState e) {
 		eCurrentState = e;
 	}
 
-	/* »ñÈ¡µ±Ç°µÄ×´Ì¬ */
+	/* è·å–å½“å‰çš„çŠ¶æ€ */
 	ZHookState getCurrentState() const {
 		return eCurrentState;
 	}
 
-	/* »ñÈ¡µ±Ç°½Ç¶È */
+	/* è·å–å½“å‰è§’åº¦ */
 	double getAngle() const { return angle; }
 
-	/* »ñÈ¡ÖĞĞÄÎ»ÖÃ */
+	/* è·å–ä¸­å¿ƒä½ç½® */
 	const Vec2& getPosCenter() const { return posCenter; }
 
-	/* »ñÈ¡Éì³¤ËÙ¶È */
+	/* è·å–ä¼¸é•¿é€Ÿåº¦ */
 	double getLengthVelocity() const { return dLengthVelocity; }
 
-private:
-	const double MAX_ANGLE = acos(-1.0) / 12.0 * 11.0;	// ¹³×Ó×î´óÆ«ÒÆ½Ç¶È
-	const double MIN_ANGLE = acos(-1.0) / 12.0;			// ¹³×Ó×îĞ¡Æ«ÒÆ½Ç¶È
-	const double DEFAULT_LENGTH;						// Ä¬ÈÏ³¤¶È
-	const double ARROW_SIZE;							// ¹³×Ó´óĞ¡
+	/* è·å–å›æ”¶é€Ÿåº¦ */
+	double getRetractLengthVelocity() const { return dRetractLengthVelocity; }
 
-	double dLength;						// ¹³×Ó³¤¶È
-	double dLengthVelocity = 8.0;		// ¹³×ÓÉì³¤ËÙ¶È
-	Vec2 posCenter;						// ¹³×ÓÖĞĞÄ×ø±ê
-	double angle = acos(-1.0) / 2.0;	// ¹³×ÓÒ¡°Ú½Ç¶È
-	double dAngularVelocity = 0.015;	// Ò¡°Ú½ÇËÙ¶È
+	/* å›æ”¶çš„æ—¶å€™æŒ‰ä¸€ä¸‹ç©ºæ ¼æ”¹å˜ç»³å­çš„å›æ”¶é€Ÿåº¦ */
+	void changeRetractLengthVelocity(double change_velocity)
+	{
+		
+		dRetractLengthVelocity += change_velocity;
+
+		//å›æ”¶çš„æœ€å¤§é€Ÿåº¦
+		if (dRetractLengthVelocity >= 5.0f)
+			dRetractLengthVelocity = 5.0f;
+	}
+
+
+	/* è®¾ç½®å¯¹åº”çš„ğŸŸé€ƒè·‘é€Ÿåº¦ */
+	void setFishEscapeVelocity(double fishEscapeVelocity)
+	{
+		fish_escape_velocity = fishEscapeVelocity;
+	}
+
 
 private:
-	ZHookState eCurrentState = ZHookState::Idle;	// Ä¬ÈÏÏĞÖÃ×´Ì¬
+	const double MAX_ANGLE = acos(-1.0) / 12.0 * 11.0;	// é’©å­æœ€å¤§åç§»è§’åº¦
+	const double MIN_ANGLE = acos(-1.0) / 12.0;			// é’©å­æœ€å°åç§»è§’åº¦
+	const double DEFAULT_LENGTH;						// é»˜è®¤é•¿åº¦
+	const double ARROW_SIZE;							// é’©å­å¤§å°
+
+	double dLength;						// é’©å­é•¿åº¦
+	double dLengthVelocity = 8.0;		// é’©å­é»˜è®¤ä¼¸é•¿é€Ÿåº¦
+	double dRetractLengthVelocity = 8.0f;	//é’©å­çš„å›æ”¶é€Ÿåº¦
+	double dDefaultRetractVelocity = 8.0f;	//é’©å­å¯¹åº”çš„ğŸŸé»˜è®¤çš„å›æ”¶é€Ÿåº¦ï¼Œå…¶å®å°±æ˜¯å‡å»ğŸŸçš„é€ƒè·‘é€Ÿåº¦ï¼Œä¾¿äºåé¢ç©ºæ ¼åŠ é€Ÿæ ¡æ­£
+	double decrease_velocity = 0.5f;	//å›æ”¶çš„è¡°å‡é€Ÿåº¦
+
+
+	Vec2 posCenter;						// é’©å­ä¸­å¿ƒåæ ‡
+	double angle = acos(-1.0) / 2.0;	// é’©å­æ‘‡æ‘†è§’åº¦
+	double dAngularVelocity = 0.015;	// æ‘‡æ‘†è§’é€Ÿåº¦
+
+	double fish_escape_velocity = 0;	//ğŸŸçš„é€ƒè·‘é€Ÿåº¦
+
+	double space_retract_length = 10.0f;	//æ¯æ¬¡æŒ‰ä¸‹ç©ºæ ¼å›æ”¶çš„é•¿åº¦
+
+private:
+	ZHookState eCurrentState = ZHookState::Idle;	// é»˜è®¤é—²ç½®çŠ¶æ€
 };
 
 #endif // !_ZHook_H_

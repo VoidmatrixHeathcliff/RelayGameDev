@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include"../../singleton/singleton.h"
 #include"Hitbox.h"
@@ -8,7 +8,7 @@
 #undef min
 
 
-//Ä¿Ç°½öÖ§³Ö¾ØĞÎÅö×²Ïä
+//ç›®å‰ä»…æ”¯æŒçŸ©å½¢ç¢°æ’ç®±
 class CollisionManager :public Singleton<CollisionManager> {
 private:
 	friend class Singleton<CollisionManager>;
@@ -16,7 +16,7 @@ private:
 	std::unordered_set<Hitbox*> hitboxList;
 
 	bool isColliding(const Hitbox* a, const Hitbox* b) const {
-		// Z£º½â¾öÉÏÏÂ³é´¤£¡
+		// Zï¼šè§£å†³ä¸Šä¸‹æŠ½æï¼
 		return (a->position.x <= (b->position.x + b->size.x)) &&
 			((a->position.x + a->size.x) >= b->position.x) &&
 			(a->position.y <= (b->position.y + b->size.y)) &&
@@ -24,30 +24,30 @@ private:
 	}
 
 	void separate(Hitbox* dynamicHitbox, const Hitbox* staticHitbox) {
-		// ¼ÆËãÅö×²µÄÖØµşÁ¿
+		// è®¡ç®—ç¢°æ’çš„é‡å é‡
 		float overlapX1 = (dynamicHitbox->position.x + dynamicHitbox->size.x) - staticHitbox->position.x;
 		float overlapX2 = (staticHitbox->position.x + staticHitbox->size.x) - dynamicHitbox->position.x;
 		float overlapY1 = (dynamicHitbox->position.y + dynamicHitbox->size.y) - staticHitbox->position.y;
 		float overlapY2 = (staticHitbox->position.y + staticHitbox->size.y) - dynamicHitbox->position.y;
 
-		// È¡×îĞ¡µÄÖØµşÁ¿ÓÃÓÚ·ÖÀë
+		// å–æœ€å°çš„é‡å é‡ç”¨äºåˆ†ç¦»
 		float overlapX = std::min(overlapX1, overlapX2);
 		float overlapY = std::min(overlapY1, overlapY2);
 
-		// ÅĞ¶ÏÔÚX·½Ïò»¹ÊÇY·½ÏòÉÏ·ÖÀë
+		// åˆ¤æ–­åœ¨Xæ–¹å‘è¿˜æ˜¯Yæ–¹å‘ä¸Šåˆ†ç¦»
 		if (overlapX < overlapY) {
-			// ·ÖÀëÔÚX·½Ïò
+			// åˆ†ç¦»åœ¨Xæ–¹å‘
 			if (overlapX1 < overlapX2) {
 				dynamicHitbox->position.x -= overlapX;
 			}
 			else {
 				dynamicHitbox->position.x += overlapX;
 			}
-			// Í£Ö¹ÔÚX·½ÏòÉÏµÄËÙ¶È
+			// åœæ­¢åœ¨Xæ–¹å‘ä¸Šçš„é€Ÿåº¦
 			dynamicHitbox->velocity.x = 0;
 		}
 		else {
-			// ·ÖÀëÔÚY·½Ïò
+			// åˆ†ç¦»åœ¨Yæ–¹å‘
 			if (overlapY1 < overlapY2) {
 				dynamicHitbox->position.y -= overlapY;
 			}
@@ -55,7 +55,7 @@ private:
 				dynamicHitbox->position.y += overlapY;
 			}
 		}
-		// Í£Ö¹¶¯Ì¬ÊµÌåÔÚ¸Ã·½ÏòÉÏµÄËÙ¶È
+		// åœæ­¢åŠ¨æ€å®ä½“åœ¨è¯¥æ–¹å‘ä¸Šçš„é€Ÿåº¦
 		if (overlapX < overlapY) {
 			dynamicHitbox->velocity.x = 0;
 		}
@@ -64,7 +64,12 @@ private:
 		}
 	}
 
+	/// <summary>
+	/// éå†å¤„ç†ç›¸åŒç¢°æ’å±‚çš„ç¢°æ’
+	/// </summary>
 	void handleCollision() {
+		//ä¸»è¦æ˜¯è™è çš„æˆ‘æƒ³è¦ğŸŸçš„ç¢°æ’çš„å›è°ƒå…ˆè§¦å‘ï¼Œå…ˆæŠŠé€ƒè·‘é€Ÿåº¦ä¼ ç»™é±¼é’©
+		
 		for (Hitbox* src : hitboxList) {
 			if (!src->enabled || src->layerDst == CollisionLayer::NoneLayer) {
 				continue;
@@ -75,16 +80,27 @@ private:
 					continue;
 				}
 				if (isColliding(src, dst)) {
+
+					//å½“åŠ¨æ€ç¢°æ’ç®±å­é‡åˆ°äº†é™æ€ç¢°æ’ç®±å­å°±éœ€è¦åˆ†ç¦»
 					if (src->type == HitboxType::Dynamic && dst->type == HitboxType::Static) {
 						separate(src, dst);
 						//printf("found collision\n");
 					}
+
+					
+					if(dst->layerSrc==CollisionLayer::EnemyLayer)
+					{
+						dst->onCollide();
+					}
+
 					src->onCollide();
+
 				}
 				//printf("found collision\n");
-
 			}
 		}
+
+
 	}
 
 	void move(float deltaTime) {
@@ -103,7 +119,7 @@ private:
 
 	~CollisionManager() {
 		for (Hitbox* hb : hitboxList) {
-			delete hb; // ÊÍ·ÅÄÚ´æ  
+			delete hb; // é‡Šæ”¾å†…å­˜  
 		}
 		hitboxList.clear();
 		//TODO

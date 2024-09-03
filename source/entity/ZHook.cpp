@@ -1,4 +1,4 @@
-#include "../../include/entity/ZHook.h"
+ï»¿#include "../../include/entity/ZHook.h"
 #include "../../include/game/collision/CollisionManager.h"
 
 ZHook::ZHook() :
@@ -8,7 +8,7 @@ ZHook::ZHook() :
 {
 	hb = PGetSingleton<CollisionManager>().createHitbox();
 	posCenter = { getwidth() / 2.0f, getheight() / 20.0f * 3.0f };
-	// »ñÈ¡¹³×ÓÎ²²¿×ø±ê
+	// è·å–é’©å­å°¾éƒ¨åæ ‡
 	Vec2 posEnd = { (float)(posCenter.x + dLength * cos(angle)), (float)(posCenter.y + dLength * sin(angle)) };
 	hb->position = { posEnd.x - 2.0f, posEnd.y - 2.0f };
 	hb->size = { 4.0f, 4.0f };
@@ -16,9 +16,17 @@ ZHook::ZHook() :
 	hb->velocity = { 0.0f, 0.0f };
 	hb->layerSrc = CollisionLayer::PlayerLayer;
 	hb->layerDst = CollisionLayer::EnemyLayer;
+
+
+	//è®¾ç½®å›è°ƒå‡½æ•°,ç¢°æ’ç®±æ£€æµ‹é¡ºåºå¯èƒ½ä¼šå¯¼è‡´æœ‰çš„é€ƒè·‘é€Ÿåº¦æ˜¯ä¸Šä¸€ä¸ªğŸŸçš„
 	hb->setOnCollide([&]() {
-		// ÓëÓãÅö×²
-		if (eCurrentState == ZHookState::Chase) eCurrentState = ZHookState::Retract;
+		// ä¸é±¼ç¢°æ’
+		if (eCurrentState == ZHookState::Chase)
+		{
+			eCurrentState = ZHookState::Retract;
+			dDefaultRetractVelocity = dLengthVelocity - fish_escape_velocity;
+			dRetractLengthVelocity = dLengthVelocity - fish_escape_velocity;
+		}
 	});
 }
 
@@ -28,13 +36,15 @@ ZHook::~ZHook()
 }
 
 void ZHook::update(float deltaTime) {
-	// Î±×Ô¶¯»ú ¶øÊÇif elseÇ¶Ì×
-	// »ñÈ¡¹³×ÓÎ²²¿×ø±ê
+	// ä¼ªè‡ªåŠ¨æœº è€Œæ˜¯if elseåµŒå¥—
+	// è·å–é’©å­å°¾éƒ¨åæ ‡
 	Vec2 posEnd = { (float)(posCenter.x + dLength * cos(angle)), (float)(posCenter.y + dLength * sin(angle)) };
 
-	// ÏĞÖÃ×´Ì¬£º¹³×ÓÒ¡°Ú
+	// é—²ç½®çŠ¶æ€ï¼šé’©å­æ‘‡æ‘†
 	if (eCurrentState == ZHookState::Idle) {
 		hb->enabled = false;
+
+		//æ‘†è§’æ›´æ–°
 		angle += dAngularVelocity;
 		if (angle <= MIN_ANGLE) {
 			angle = MIN_ANGLE;
@@ -45,39 +55,64 @@ void ZHook::update(float deltaTime) {
 			dAngularVelocity = -dAngularVelocity;
 		}
 	}
-	// ×¥Óã×´Ì¬£º¹³×ÓÏòÇ°ÉìÖ±
+	// æŠ“é±¼çŠ¶æ€ï¼šé’©å­å‘å‰ä¼¸ç›´
 	else if (eCurrentState == ZHookState::Chase) {
 		hb->enabled = true;
-		// Éì³¤
+		// ä¼¸é•¿
 		dLength += dLengthVelocity;
-		// ÅĞ¶ÏÊÇ·ñ³¬¹ı±ß½ç
+		// åˆ¤æ–­æ˜¯å¦è¶…è¿‡è¾¹ç•Œ
 		if (posEnd.x < 0 || posEnd.x >= getwidth() || posEnd.y < 0 || posEnd.y >= getheight()) {
-			eCurrentState = ZHookState::Retract;
+			eCurrentState = ZHookState::Retract_empty;
 		}
 	}
-	// Ëõ»Ø×´Ì¬£º¹³×ÓÍù»ØËõ
+	// ç¼©å›çŠ¶æ€ï¼šé’©å­å¾€å›ç¼©
 	else if (eCurrentState == ZHookState::Retract) {
 		hb->enabled = false;
-		dLength -= dLengthVelocity;
+		if (dRetractLengthVelocity > dDefaultRetractVelocity)
+		{
+			dRetractLengthVelocity -= decrease_velocity;
+
+		}
+		else dRetractLengthVelocity = dDefaultRetractVelocity;
+
+
+
+		dLength -= dRetractLengthVelocity;
+
+
 		if (dLength <= DEFAULT_LENGTH) {
 			dLength = DEFAULT_LENGTH;
+			dRetractLengthVelocity = dLengthVelocity;
 			eCurrentState = ZHookState::Idle;
 		}
 	}
-	// ¸üĞÂ¹³×ÓÅö×²Ïä
+	//ç¼©å›çŠ¶æ€ï¼Œä½†æ²¡æŠ“åˆ°ğŸŸ
+	else if (eCurrentState == ZHookState::Retract_empty)
+	{
+		hb->enabled = false;
+		
+		dLength -= dLengthVelocity;
+
+		if (dLength <= DEFAULT_LENGTH) {
+			dLength = DEFAULT_LENGTH;
+			dRetractLengthVelocity = dLengthVelocity;
+			eCurrentState = ZHookState::Idle;
+		}
+	}
+	// æ›´æ–°é’©å­ç¢°æ’ç®±
 	hb->position = { posEnd.x - 2.0f, posEnd.y - 2.0f };
 }
 
 void ZHook::draw(const RenderInfo& renderInfo) {
-	//»ñÈ¡¹³×ÓÎ²²¿×ø±ê
+	//è·å–é’©å­å°¾éƒ¨åæ ‡
 	Vec2 posEnd = { (float)(posCenter.x + dLength * cos(angle)), (float)(posCenter.y + dLength * sin(angle)) };
 
-	// »æÖÆÖ÷Ïß
+	// ç»˜åˆ¶ä¸»çº¿
 	setlinecolor(BLACK);
 	setlinestyle(PS_SOLID, 2);
 	line(posCenter.x, posCenter.y, posEnd.x, posEnd.y);
 
-	// »æÖÆ¹³×ÓÍ·²¿
+	// ç»˜åˆ¶é’©å­å¤´éƒ¨
 	double angle1 = angle + acos(-1.0) / 6.0;
 	double angle2 = angle - acos(-1.0) / 6.0;
 	int arrowX1 = posEnd.x - static_cast<int>(ARROW_SIZE * cos(angle1));
@@ -89,7 +124,7 @@ void ZHook::draw(const RenderInfo& renderInfo) {
 	line(arrowX1, arrowY1, posEnd.x, posEnd.y);
 	line(arrowX2, arrowY2, posEnd.x, posEnd.y);
 
-	// »æÖÆÅö×²Ïä
+	// ç»˜åˆ¶ç¢°æ’ç®±
 // #define _HOOK_HITBOX_DEBUG_
 #ifdef _HOOK_HITBOX_DEBUG_
 	rectangle(hb->position.x, hb->position.y, hb->position.x + hb->size.x, hb->position.y + hb->size.y);

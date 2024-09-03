@@ -29,8 +29,11 @@ private:
 	std::vector<ZFish*> vecFishPool;
 	int iScore;
 	PTextLabel* scoreText = nullptr;
+	PTextLabel* timerText = nullptr;
 
 	PImageLabel* flyingFishsHookImage;
+
+	double timer = 10.0f;
 };
 
 

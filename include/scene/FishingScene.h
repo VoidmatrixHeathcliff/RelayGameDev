@@ -8,6 +8,42 @@
 #include "../../../include/scene/GameScene.h"
 #include "iostream"
 #include "string"
+#include "../../include/game/PResourseManager.h"
+#include "../../include/game/collision/CollisionManager.h"
+
+
+/// <summary>
+/// 对应的打击白色线条位置（（100.40）~（480.40））
+/// </summary>
+struct checkline
+{
+	int width = 10;
+	int height = 40;
+	double velocity = 500.0f;
+	double position_x = 100.0f;
+	double position_y = 20.0f;
+	bool is_facing_right = true;
+
+};
+
+/// <summary>
+/// 对应的打击音乐块
+/// </summary>
+struct beatBlock
+{
+	bool is_active = false;
+	int width = 30;
+	int height = 40;
+	double position_x = 100.0f;
+	double position_y = 20.0f;
+};
+
+enum fishScene
+{
+	judge,			//打击对应的白块判断
+	fish			//正常的钓鱼
+
+};
 
 
 struct Point {
@@ -48,11 +84,14 @@ enum class HasSaved
 	Failed,
 	Successed
 };
+
 enum FishFlag :int
 {
 	none = 0,
 	savelive = 1
 };
+
+
 struct FishData
 {
 	FishType type;								//鱼的类型
@@ -71,6 +110,11 @@ public:
 	}
 	FishData() = default;
 };
+
+
+
+
+
 class FishingScene :public PScene
 {
 	const float fish_size = 40;	//钓点的判定范围
@@ -197,277 +241,6 @@ public:
 		}
 		// 最后一步直接到达终点,这里是我的小小整蛊，请别介意（
 
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-
-		//path.push_back(end);
-
-		//path.push_back(end);
-
-		//path.push_back(end);
-
-		//path.push_back(end);
-		//path.push_back(end);
-
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-		//path.push_back(end);
-
-		//path.push_back(end);
-
-
 	}
 
 	void endFishing(bool flag=true)
@@ -482,7 +255,11 @@ public:
 		//这里检测范围*1.5是因为一倍的范围我调不来，开了就是开了！你是高手可以试试1被范围的判定
 		if (distance(fishingPoint, fishPoint) < fish_size * 1.5)
 		{
-			std::cout << "钓到咯" << current_fish->name << std::endl;
+			fish_scene = fishScene::judge;
+			beat_block.is_active = true;
+			beat_block.position_x = rand() % 380 + 100.0f;
+			
+			//::cout << "钓到咯" << current_fish->name << std::endl;
 			//currentFishType = lastFishType;
 		}
 		else
@@ -576,9 +353,15 @@ private:
 	FishData* current_fish = nullptr;
 	FishDataMap fish_data_map;
 	PMCIInstance* mci_instance = nullptr;
+
+
+
+	checkline check_line;			//需要打击的白色方块位置
+	fishScene fish_scene = fishScene::fish;	//当前场景
+	beatBlock beat_block;
 	
 private:
-	void initialize_fish();	//初始化鱼的参数
-	int get_total_power();	//获取所有鱼的权重
-	void new_fish();	//新生成一条鱼（本质：更改current_fish)
+	void initialize_fish();			//初始化鱼的参数
+	int get_total_power();			//获取所有鱼的权重
+	void new_fish();				//新生成一条鱼（本质：更改current_fish)
 };

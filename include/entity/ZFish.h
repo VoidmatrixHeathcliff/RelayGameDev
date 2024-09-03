@@ -1,4 +1,4 @@
-#ifndef _ZFish_H_
+ï»¿#ifndef _ZFish_H_
 #define _ZFish_H_
 
 #include "Entity.h"
@@ -8,17 +8,17 @@
 
 class ZHook;
 /*
-	ÊÊÓÃÓÚ ZFishingScene µÄ ZFish
+	é€‚ç”¨äº ZFishingScene çš„ ZFish
 */
 class ZFish : public PEntity {
 
 public:
 	enum class ZFishState
 	{
-		Idle,			// ÏĞÖÃ£ºÓÎÓ¾
-		BeCaught,		// ±»×¥£º³¯¹³×ÓÒÆ¶¯
-		Death,			// ±»×¥ÉÏ°¶
-		Disappear		// ÏûÊ§
+		Idle,			// é—²ç½®ï¼šæ¸¸æ³³
+		BeCaught,		// è¢«æŠ“ï¼šæœé’©å­ç§»åŠ¨,è¿™é‡Œä¼šæŒ£æ‰
+		Death,			// è¢«æŠ“ä¸Šå²¸
+		Disappear		// æ¶ˆå¤±
 	};
 
 public:
@@ -42,13 +42,15 @@ public:
 
 
 private:
-	PImageLabel* imageLabel;			// ÓÃÓÚ»æÖÆµÄImageLabel
-	ZHook* pZHook = nullptr;			// Óë¹³×ÓÁªÏµ
+	PImageLabel* imageLabel;			// ç”¨äºç»˜åˆ¶çš„ImageLabel
+	ZHook* pZHook = nullptr;			// ä¸é’©å­è”ç³»
 
-	int m_iFrameIndex;					// Ëæ»ú¶¯»­Ö¡
+	int m_iFrameIndex;					// éšæœºåŠ¨ç”»å¸§
 	int m_iWidth;
 	int m_iHeight;
 	ZFishState eCurrentState = ZFishState::Idle;
+
+	double escape_velocity = 0.0f;		//ğŸŸçš„æŒ£æ‰å¼ºåº¦
 };
 
 

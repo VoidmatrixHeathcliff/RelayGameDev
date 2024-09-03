@@ -15,6 +15,10 @@ PLGame::PLGame(const int& Width, const int& Height, const PString& PlayerName)
 	loadScene = new LoadScene();
 	gameScene = new GameScene();
 	fishingScene = new FishingScene();
+	fishingScene->SetCustomCallback([&]() {
+		SetCurrentScene(mainScene);
+		});
+
 	zFishingScene = new ZFishingScene();
 	zFishingScene->setWindowWidth(Width);
 	zFishingScene->setWindowHeight(Height);

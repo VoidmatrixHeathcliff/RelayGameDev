@@ -1,4 +1,4 @@
-V ME 50!
+﻿V ME 50!
 Big V old teachear!
 Made by C++!
 Use C20!
@@ -12,3 +12,4 @@ Man! what can I say
 See splashes.txt!
 Not To Be?
 全新忧化！飞出屏幕的鱼！
+Man!Say 不了一点！
