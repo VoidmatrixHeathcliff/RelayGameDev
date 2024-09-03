@@ -547,6 +547,10 @@ public:
 	HasSaved get_is_saved() { return is_saved; }
 	void set_fishing_state(FishingState Fs) { current_fishing_state = Fs; }
 
+	void set_is_saved(HasSaved hs) {
+		is_saved = hs;
+	}
+
 private:
 	Point textPoint;
     Point fishingPoint;

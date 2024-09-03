@@ -181,6 +181,9 @@ public:
 		//hb->setOnCollide([&]() { isGrounded = true; });
 	}
 
+	~PPlayer() {
+		PGetSingleton<CollisionManager>().destroyHitbox(hb);
+	}
 
 	void draw(const RenderInfo& renderInfo)override {
 		setfillcolor(RGB(200, 0, 0));
@@ -205,12 +208,17 @@ public:
 	}
 	void update(float deltatime) override {
 
+		if (hb->position.y >= 35) {
+			hb->position = { 5.f,0.f };
+		}
+
 		//妥协用的地面检测
-		if (hb->position.y == before_position_y)
+		//更新：取消了地面检测，恢复左脚踩右脚上天
+		if (hb->position.y != before_position_y)
 		{
 			isGrounded = true;
 		}
-			
+
 		before_position_y = hb->position.y;
 		if (isJumping) {
 			hb->velocity.y = -jumpForce; // 设置垂直速度为跳跃力量

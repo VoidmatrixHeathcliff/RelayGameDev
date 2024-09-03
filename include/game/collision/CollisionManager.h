@@ -116,6 +116,7 @@ public:
 		return ret;
 	}
 
+
 	void destroyHitbox(Hitbox* hb) {
 		hitboxList.erase(hb);
 		delete hb;

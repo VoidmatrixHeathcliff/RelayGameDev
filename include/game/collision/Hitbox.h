@@ -24,6 +24,8 @@ public:
 
 	HitboxType type = HitboxType::Dynamic;
 
+	
+
 	void addLayerDst(layer_t layer) {
 		layerDst ^= layer;
 	}

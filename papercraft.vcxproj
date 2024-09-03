@@ -181,6 +181,7 @@
     <ClInclude Include="include\beg\Hand.h" />
     <ClInclude Include="include\beg\Inventory.h" />
     <ClInclude Include="include\beg\Weapon.h" />
+    <ClInclude Include="include\Camera\Camera2D.h" />
     <ClInclude Include="include\common\common.h" />
     <ClInclude Include="include\EasyXBase.h" />
     <ClInclude Include="include\entity\animals\Sheep.h" />

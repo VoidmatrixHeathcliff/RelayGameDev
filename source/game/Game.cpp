@@ -62,12 +62,16 @@ void PLGame::Loop() {
 			if (fs->get_is_saved() == HasSaved::Successed)
 			{
 				gameScene->get_player()->set_player_state(PlayerState::Alive);
+				fs->set_fishing_state(FishingState::Play);
+				fs->set_is_saved(HasSaved::None);
 				SwitchToGameScene();
 			}
 			else if (fs->get_is_saved() == HasSaved::Failed)
 			{
 				gameScene->get_player()->set_player_state(PlayerState::Dead);
+				fs->set_is_saved(HasSaved::None);
 				SwitchToMainScene();
+				fs->set_fishing_state(FishingState::Play);
 			}
 
 		}
@@ -140,10 +144,12 @@ void PLGame::SetCurrentScene(PScene* scene) {
 }
 
 void PLGame::SwitchToGameScene() {
+	
 	SetCurrentScene(gameScene);
 }
 
 void PLGame::SwitchToMainScene() {
+	gameScene->get_player()->set_player_state(PlayerState::Alive);
 	SetCurrentScene(mainScene);
 }
 

@@ -14,6 +14,11 @@ void FishingScene::_OnMessage(ExMessage& Message)
 			fishingPoint.x = Message.x;
 			fishingPoint.y = Message.y;
 		}
+		if (Message.x >= minX && Message.x <= maxX && Message.y >= minY && Message.y <= maxY)
+		{
+			fishingPoint.x = Message.x;
+			fishingPoint.y = Message.y;
+		}
 	}
 
 	if (isFishingpointExsits&&Message.message == WM_KEYUP && Message.vkcode == VK_SPACE)

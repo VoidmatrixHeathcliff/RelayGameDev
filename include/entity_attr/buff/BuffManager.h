@@ -4,7 +4,7 @@
 #pragma once
 
 #include "../../../include/entity_attr/buff/Buff.h"
-#include "../../../include/entity_attr/buff/Buff_Ignited.h"
+//#include "../../../include/entity_attr/buff/Buff_Ignited.h"
 #include "../../../include/time/Timer.h"
 class PEntity;
 

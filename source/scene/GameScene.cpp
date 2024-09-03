@@ -13,6 +13,8 @@ void GameScene::_OnDraw(PDevice* Device) {
 		block->draw(info);
 	}
 	player->draw(info);
+
+
 }
 
 void GameScene::_OnUpdate(float deltaTime) {
