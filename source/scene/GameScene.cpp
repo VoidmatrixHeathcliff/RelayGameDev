@@ -28,18 +28,29 @@ void GameScene::_OnUpdate(float deltaTime) {
 }
 
 void GameScene::_OnExit() {
-	if (player->get_player_state() == PlayerState::Dead)
-	{
-		//TODO 玩家死透了
+	if (player != nullptr) {
+		if (player->get_player_state() == PlayerState::Dead)
+		{
+			//TODO 玩家死透了
+		}
+		delete player;
+	}
+	for (auto* block : blocks) {
+		delete block;
 	}
 }
 
+/*
+	Z：将创建GameScene而创建blocks 改成 进入GameScene才创建blocks
+*/
+
 void GameScene::_OnEnter() {
 	setbkcolor(RGB(200, 200, 200));
-}
 
-GameScene::GameScene() {
-	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/end_bricks.png"), {5.f, 5.f}));
+	player = new PPlayer();
+
+	SetDrawPolicy(DrawPolicy::GUIAbove);
+	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/end_bricks.png"), { 5.f, 5.f }));
 	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/end_bricks.png"), { 4.f,5.f }));
 	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/end_bricks.png"), { 3.f,5.f }));
 	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/end_bricks.png"), { 6.f,5.f }));
@@ -52,22 +63,20 @@ GameScene::GameScene() {
 	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/wool_colored_gray.png"), { 6.f,10.f }));
 	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/wool_colored_gray.png"), { 7.f,10.f }));
 	blocks.push_back(new PBlock(new PImageLabel("./assets/textures/blocks/wool_colored_gray.png"), { 8.f,10.f }));
+}
 
-	player = new PPlayer();
-
-	SetDrawPolicy(DrawPolicy::GUIAbove);
+GameScene::GameScene() : PScene() {
+	player = nullptr;
 }
 
 GameScene::~GameScene() {
-	for (auto* block : blocks) {
-		delete block;
-	}
-	delete player;
 }
 
 PlayerState GameScene::get_player_state()
 {
-	return player->get_player_state();
+	if (player != nullptr) return player->get_player_state();
+	return PlayerState::Dead;
+	
 }
 
 PPlayer*& GameScene::get_player()

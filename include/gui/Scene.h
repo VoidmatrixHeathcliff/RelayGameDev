@@ -116,6 +116,19 @@ public:
 	void SetCustomCallback(const callback_t& Callback) {
 		_callback = Callback;
 	}
+
+	
+	// Z：给Scene添加了可以获取窗口大小的api
+public:
+	void setWindowHeight(int iWindowHeight) { m_iWindowHeight = iWindowHeight; }
+	void setWindowWidth(int iWindowWidth) { m_iWindowWidth = iWindowWidth; }
+	int getWindowHeight() const { return m_iWindowHeight; }
+	int getWindowWidth() const { return m_iWindowWidth; }
+
+
+protected:
+	int m_iWindowWidth = 0;
+	int m_iWindowHeight = 0;
 };
 
 

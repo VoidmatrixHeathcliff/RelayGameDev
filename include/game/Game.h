@@ -19,6 +19,7 @@
 #include "../scene/LoadScene.h"
 #include "../scene/GameScene.h"
 #include "../scene/FishingScene.h"
+#include "../scene/ZFishingScene.h"
 
 
 /// The main window
@@ -37,6 +38,7 @@ public:
     void SwitchToGameScene();
     void SwitchToMainScene();
     void SwitchToFishingScene();
+    void SwitchToZFishingScene();
 
 private:
     PString _playerName;
@@ -50,4 +52,5 @@ private:
     GameScene* gameScene;
     PScene* currentScene;
     PScene* fishingScene;
+    ZFishingScene* zFishingScene;
 };

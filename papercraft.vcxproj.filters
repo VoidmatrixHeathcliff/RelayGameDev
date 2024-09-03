@@ -86,6 +86,18 @@
     <ClCompile Include="FishScene.cpp">
       <Filter>source\scene</Filter>
     </ClCompile>
+    <ClCompile Include="source\game\PResourseManager.cpp">
+      <Filter>source\game</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scene\ZFishingScene.cpp">
+      <Filter>source\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entity\ZFish.cpp">
+      <Filter>source\entity\ZFish</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entity\ZHook.cpp">
+      <Filter>source\entity\ZFish</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="thirdparty\OpenString-CMake\include\wide_text.h">
@@ -286,10 +298,22 @@
     <ClInclude Include="include\scene\FishingScene.h">
       <Filter>include\scene</Filter>
     </ClInclude>
-    <ClInclude Include="include\gui\ImageLabel.h">
-      <Filter>include\launcher</Filter>
-    </ClInclude>
     <ClInclude Include="include\Camera\Camera2D.h" />
+    <ClInclude Include="include\gui\ImageLabel.h">
+      <Filter>include\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\PResourseManager.h">
+      <Filter>include\game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\ZFishingScene.h">
+      <Filter>include\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entity\ZFish.h">
+      <Filter>include\entity\ZFIsh</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entity\ZHook.h">
+      <Filter>include\entity\ZFIsh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="thirdparty">
@@ -417,6 +441,15 @@
     </Filter>
     <Filter Include="include\beg">
       <UniqueIdentifier>{d5f6c8c6-7fec-4e1b-a120-9b807fc16b55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\entity">
+      <UniqueIdentifier>{c8ffd023-3b32-45d8-b76d-fa8424c0333b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\entity\ZFIsh">
+      <UniqueIdentifier>{6f7b19f6-e139-40a7-949c-917603344d65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\entity\ZFish">
+      <UniqueIdentifier>{a6acf4df-a7cf-4de3-99ef-6c50d4fc8948}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -29,7 +29,7 @@ protected:
 
 	int facingDir = 1;				//实体朝向，-1左，1右
 
-	Hitbox* hb;						//实体碰撞箱
+	Hitbox* hb = nullptr;			//实体碰撞箱
 
 
 public:

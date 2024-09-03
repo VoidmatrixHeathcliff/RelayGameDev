@@ -148,9 +148,12 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="source\assets\AssetManager.cpp" />
     <ClCompile Include="source\EasyXBase.cpp" />
+    <ClCompile Include="source\entity\ZFish.cpp" />
+    <ClCompile Include="source\entity\ZHook.cpp" />
     <ClCompile Include="source\game\Block.cpp" />
     <ClCompile Include="source\game\component\Component.cpp" />
     <ClCompile Include="source\game\Game.cpp" />
+    <ClCompile Include="source\game\PResourseManager.cpp" />
     <ClCompile Include="source\gui\Button.cpp" />
     <ClCompile Include="source\gui\GUIManager.cpp" />
     <ClCompile Include="source\gui\GUIObject.cpp" />
@@ -163,6 +166,7 @@
     <ClCompile Include="source\scene\GameScene.cpp" />
     <ClCompile Include="source\scene\LoadScene.cpp" />
     <ClCompile Include="source\scene\MainScene.cpp" />
+    <ClCompile Include="source\scene\ZFishingScene.cpp" />
     <ClCompile Include="source\String.cpp" />
     <ClCompile Include="source\statusbar\Statusbar.cpp" />
     <ClCompile Include="thirdparty\OpenString-CMake\source\codeunit_sequence.cpp" />
@@ -189,6 +193,8 @@
     <ClInclude Include="include\entity\mobs\Enemy.h" />
     <ClInclude Include="include\entity\mobs\Zombie.h" />
     <ClInclude Include="include\entity\Player.h" />
+    <ClInclude Include="include\entity\ZFish.h" />
+    <ClInclude Include="include\entity\ZHook.h" />
     <ClInclude Include="include\entity_attr\buff\Buff.h" />
     <ClInclude Include="include\entity_attr\stats\EntityStatsManager.h" />
     <ClInclude Include="include\event\Event.h" />
@@ -200,6 +206,7 @@
     <ClInclude Include="include\game\collision\Hitbox.h" />
     <ClInclude Include="include\game\component\Component.h" />
     <ClInclude Include="include\game\Game.h" />
+    <ClInclude Include="include\game\PResourseManager.h" />
     <ClInclude Include="include\gui\GUIManager.h" />
     <ClInclude Include="include\gui\GUIObject.h" />
     <ClInclude Include="include\gui\ImageLabel.h" />
@@ -214,6 +221,7 @@
     <ClInclude Include="include\scene\GameScene.h" />
     <ClInclude Include="include\scene\LoadScene.h" />
     <ClInclude Include="include\scene\MainScene.h" />
+    <ClInclude Include="include\scene\ZFishingScene.h" />
     <ClInclude Include="include\singleton\Singleton.h" />
     <ClInclude Include="include\String.h" />
     <ClInclude Include="include\statusbar\Statusbar.h" />

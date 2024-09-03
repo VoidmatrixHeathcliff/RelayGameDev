@@ -31,7 +31,7 @@ public:
 	PButton* _playButton;
 	PButton* _settingButton;
 	PButton* _quitButton;
-
+	PButton* _zFishingButton;
 
 public:
 	MainScene();

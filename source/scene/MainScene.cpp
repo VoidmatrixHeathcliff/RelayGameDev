@@ -1,6 +1,7 @@
 #define _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS		//stupid c++
 
 #include"../../include/scene/MainScene.h"
+#include "../../include/scene/ZFishingScene.h"
 #include <codecvt>
 #include<iostream>
 
@@ -74,6 +75,12 @@ MainScene::MainScene() :PScene() {
 	_menuUI.emplace_back(_settingButton);
 	_menuUI.emplace_back(_quitButton);
 	_menuUI.emplace_back(_gameLogoImage);
+
+	// ZFishingScene°´Å¥
+	_zFishingButton = new PButton((int)buttonWidth, (int)buttonHeight / 2, ">>ZFishing<<");
+	_zFishingButton->FontStyle.lfHeight = (LONG)fontSize;
+	_zFishingButton->Move(_quitButton->GetX(), _quitButton->GetY() + _zFishingButton->GetHeight() * 2 + 20);
+	_menuUI.emplace_back(_zFishingButton);
 
 	for (auto& object : _menuUI) {
 		AddObject(object);

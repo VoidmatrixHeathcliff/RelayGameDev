@@ -145,13 +145,13 @@ public:
 
 		for (int i = row*column; i < contents.size(); i++)
 		{
-			int x = (i - row * column) * single_length;
-			int y =480 - single_length;
+			int x = (int)((i - row * column) * single_length);
+			int y = (int)(480 - single_length);
 			if (i - row * column == on_hand)
 			{
 				setlinecolor(RGB(255, 102, 178));
 			}
-			fillrectangle(x, y, x + single_length, y + single_length);
+			fillrectangle(x, y, (int)(x + single_length), (int)(y + single_length));
 			if (i-row*column == on_hand)
 			{
 				setlinecolor(RGB(0,0,0));

@@ -16,10 +16,11 @@ private:
 	std::unordered_set<Hitbox*> hitboxList;
 
 	bool isColliding(const Hitbox* a, const Hitbox* b) const {
-		return (a->position.x < (b->position.x + b->size.x)) &&
-			((a->position.x + a->size.x) > b->position.x) &&
-			(a->position.y < (b->position.y + b->size.y)) &&
-			((a->position.y + a->size.y) > b->position.y);
+		// Z：解决上下抽搐！
+		return (a->position.x <= (b->position.x + b->size.x)) &&
+			((a->position.x + a->size.x) >= b->position.x) &&
+			(a->position.y <= (b->position.y + b->size.y)) &&
+			((a->position.y + a->size.y) >= b->position.y);
 	}
 
 	void separate(Hitbox* dynamicHitbox, const Hitbox* staticHitbox) {

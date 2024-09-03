@@ -30,9 +30,9 @@ public:
 		pause();
 	}
 
-	Timer& set(float duration, const std::function<void()> onTimeout = {}) {
+	Timer& set(float duration, const std::function<void()> onTimeout = nullptr) {
 		this->duration = std::max(duration, MIN_DURATION);
-		this->onTimeout_ = onTimeout;
+		if (onTimeout != nullptr) this->onTimeout_ = onTimeout;			// Z：防止设置间隔的时候回调函数被迫修改。
 		return *this;
 	}
 
@@ -69,7 +69,7 @@ public:
 	}
 
 	void update(float deltaTime) {
-		if (!_isRunning)return;
+		if (!_isRunning) return;
 		remainingTime -= deltaTime;
 		size_t currentFrameTrigger = 0;
 		while (remainingTime <= 0 && currentFrameTrigger < MAX_FRAME_TRIGGER) {

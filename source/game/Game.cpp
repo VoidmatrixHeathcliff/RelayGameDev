@@ -15,11 +15,18 @@ PLGame::PLGame(const int& Width, const int& Height, const PString& PlayerName)
 	loadScene = new LoadScene();
 	gameScene = new GameScene();
 	fishingScene = new FishingScene();
+	zFishingScene = new ZFishingScene();
+	zFishingScene->setWindowWidth(Width);
+	zFishingScene->setWindowHeight(Height);
+	zFishingScene->SetCustomCallback([&]() {
+		SetCurrentScene(mainScene);
+	});
 
 	loadScene->SetCustomCallback([this] {
 		SetCurrentScene(mainScene);
 	});
 	mainScene->_playButton->OnClick.Connect(this, &PLGame::SwitchToGameScene);
+	mainScene->_zFishingButton->OnClick.Connect(this, &PLGame::SwitchToZFishingScene);
 
 	SetCurrentScene(loadScene);
 
@@ -88,8 +95,18 @@ void PLGame::Loop() {
 				fishingScene = a;
 			}
 
+//#define _TEST_ZFISHING_
+#ifdef  _TEST_ZFISHING_
+
+			if (message.message == WM_KEYDOWN && message.vkcode == VK_F1) {
+				SetCurrentScene(zFishingScene);	// F1进入Z钓鱼场景
+			}
+
+#endif //  _TEST_ZFISHING_
+
 			currentScene->OnMessage(message);
 		}
+
 
 		//calculate deltaTime
 		auto currentTime = std::chrono::high_resolution_clock::now();
@@ -155,4 +172,8 @@ void PLGame::SwitchToMainScene() {
 
 void PLGame::SwitchToFishingScene() {
 	SetCurrentScene(fishingScene);
+}
+
+void PLGame::SwitchToZFishingScene() {
+	SetCurrentScene(zFishingScene);
 }
