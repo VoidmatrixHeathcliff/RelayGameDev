@@ -53,7 +53,7 @@ void ZFishingScene::_OnMessage(ExMessage& Message) {
 		}
 	}
 
-	if (Message.message == WM_KEYDOWN && Message.vkcode == VK_SPACE) {
+	if (Message.message == WM_LBUTTONDOWN || (Message.message == WM_KEYDOWN && Message.vkcode == VK_SPACE)) {
 		if (pZHook->getCurrentState() == ZHook::ZHookState::Retract) {
 			pZHook->changeRetractLengthVelocity(5.0f);
 		}

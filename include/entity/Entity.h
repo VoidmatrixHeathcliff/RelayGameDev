@@ -58,8 +58,7 @@ public:
 
 
 	virtual void draw(const RenderInfo& renderInfo) = 0;
-
-	virtual void update(float deltaTime) {
+	virtual void update(float deltaTim) {
 		buffs.CheckBuffs(this);//实时更新实体的Buff
 	}
 };

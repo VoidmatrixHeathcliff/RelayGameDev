@@ -136,7 +136,11 @@ public:
 						isMovingRight = true;
 						break;
 					case 0x57:
-						if (isGrounded)
+						//滑不稽：按下W跳跃时，地面和跳跃的状态应该互斥，为了避免以后可能出现的奇怪BUG，我将下面if判断条件修改
+						//（滑不稽）修改前：
+						/*if (isGrounded)*/
+						//（滑不稽）修改后：
+						if (isGrounded && !isJumping)
 						{
 							isJumping = true;
 							isGrounded = false;
@@ -213,8 +217,15 @@ public:
 		}
 
 		//妥协用的地面检测
-		//更新：取消了地面检测，恢复左脚踩右脚上天
+		//滑不稽：将判断条件修改，恢复地面检测，防止左脚踩右脚上天（暂时没看懂妥协用的地面检测是什么意思）
+		//（滑不稽）修改前：取消地面检测，左脚踩右脚上天
+		/*
 		if (hb->position.y != before_position_y)
+		{
+			isGrounded = true;
+		}*/
+		//（滑不稽）修改后：恢复地面检查，防止左脚踩右脚上天以及二连跳
+		if (hb->position.y == before_position_y && !isJumping)
 		{
 			isGrounded = true;
 		}
@@ -256,7 +267,7 @@ protected:
 
 	bool isJumping = false;			// 是否正在跳跃
 	bool isGrounded = true;			// 是否在地面上，需要碰撞层回调检测才能实现
-	float jumpForce = 5.0f;		// 跳跃力量
+	float jumpForce = 8.0f;		// 跳跃力量
 
 	bool run = false;				// 是否奔跑
 	float runfast = 2.5f;			// 奔跑速度

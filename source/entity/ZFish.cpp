@@ -57,22 +57,22 @@ ZFish::ZFish() :
 	switch (m_iFrameIndex)
 	{
 	case 0:
-		escape_velocity = 8.5f;
+		escape_velocity = 5.5f;
 		break;
 	case 1:
-		escape_velocity = 9.0f;
+		escape_velocity = 6.0f;
 		break;
 	case 2:
-		escape_velocity = 9.5f;
+		escape_velocity = 7.5f;
 		break;
 	case 3:
-		escape_velocity = 10.0f;
+		escape_velocity = 8.0f;
 		break;
 	case 4:
-		escape_velocity = 10.5f;
+		escape_velocity = 9.5f;
 		break;
 	case 5:
-		escape_velocity = 11.0f;
+		escape_velocity = 10.0f;
 		break;
 
 	}

@@ -9,7 +9,7 @@ KeyBoardControl* KeyBoardControl::instance = nullptr;
 
 bool NotKeyBoard::KeyBoardControl::OnMessage(ExMessage& msg)
 {
-	if (msg.message == WM_KEYDOWN)
+	if (msg.message == WM_KEYDOWN)		//P:0x51-Z:0x5A(81-90) 
 	{
 		if (48 <= msg.vkcode && msg.vkcode <= 57)
 		{
@@ -20,7 +20,7 @@ bool NotKeyBoard::KeyBoardControl::OnMessage(ExMessage& msg)
 		else if (65 <= msg.vkcode && msg.vkcode <= 90)
 		{
 			isLetterKeyDown[msg.vkcode - 65] = true;
-			isLetterKeyUp[msg.vkcode - 48] = false;
+			isLetterKeyUp[msg.vkcode - 65] = false;
 		}
 	}
 	else if (msg.message == WM_KEYUP)
@@ -39,7 +39,6 @@ bool NotKeyBoard::KeyBoardControl::OnMessage(ExMessage& msg)
 	}
 	else
 		return false;
-
 	return true;
 }
 

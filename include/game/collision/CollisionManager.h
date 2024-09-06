@@ -17,9 +17,16 @@ private:
 
 	bool isColliding(const Hitbox* a, const Hitbox* b) const {
 		// Z：解决上下抽搐！
-		return (a->position.x <= (b->position.x + b->size.x)) &&
+		//滑不稽：修复角色会粘在方块下部分的BUG，该BUG出现在 “解决上下抽搐！”中
+		//（滑不稽）修改前：
+		/*return (a->position.x <= (b->position.x + b->size.x)) &&
 			((a->position.x + a->size.x) >= b->position.x) &&
 			(a->position.y <= (b->position.y + b->size.y)) &&
+			((a->position.y + a->size.y) >= b->position.y);*/
+		//（滑不稽）修改后：
+		return (a->position.x <= (b->position.x + b->size.x)) &&
+			((a->position.x + a->size.x) >= b->position.x) &&
+			(a->position.y < (b->position.y + b->size.y)) &&
 			((a->position.y + a->size.y) >= b->position.y);
 	}
 
