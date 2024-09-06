@@ -98,6 +98,12 @@
     <ClCompile Include="source\entity\ZHook.cpp">
       <Filter>source\entity\ZFish</Filter>
     </ClCompile>
+    <ClCompile Include="source\Piano\Piano.cpp">
+      <Filter>source\Piano</Filter>
+    </ClCompile>
+    <ClCompile Include="source\keyboard\keyboard.cpp">
+      <Filter>source\keyboard</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="thirdparty\OpenString-CMake\include\wide_text.h">
@@ -314,6 +320,12 @@
     <ClInclude Include="include\entity\ZHook.h">
       <Filter>include\entity\ZFIsh</Filter>
     </ClInclude>
+    <ClInclude Include="include\notPiano\notPiano.h">
+      <Filter>include\notPiano</Filter>
+    </ClInclude>
+    <ClInclude Include="include\keyboard\keyboard.h">
+      <Filter>include\keyboard</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="thirdparty">
@@ -450,6 +462,18 @@
     </Filter>
     <Filter Include="source\entity\ZFish">
       <UniqueIdentifier>{a6acf4df-a7cf-4de3-99ef-6c50d4fc8948}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\notPiano">
+      <UniqueIdentifier>{1d883872-d08a-465b-938d-0ae2fdc611e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Piano">
+      <UniqueIdentifier>{22187b5b-3f30-43e3-b811-198642dd17e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\keyboard">
+      <UniqueIdentifier>{1bb06bf4-eff1-41be-a1b5-8d781d1df958}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\keyboard">
+      <UniqueIdentifier>{192f3cb4-cfc8-40dd-b90f-021e78a1cd1c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

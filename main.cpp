@@ -1,6 +1,7 @@
 #include "./include/launcher/Launcher.h"
 #include "./include/game/Game.h"
 #include "./include/game/collision/CollisionManager.h"
+#include "./include/notPiano/notPiano.h"
 #ifdef _DEBUG
 #include<iostream>
 #endif
@@ -142,12 +143,27 @@ int WinMain(_In_ HINSTANCE hInstance,
 			_In_ int nShowCmd)		//这个函数相当于主函数
 {
 	try {
+		// not_bmk: a global piano
+		NotPiano::Piano notBackGroundPiano;
 	#ifndef _DEBUG
-		PLanuncher launcher;
+		// you cheater !
+		auto NGGYU =  NotPiano::Piano::compose("1^. 2^. 5 | 2^. 3^. 5^__ 4^__ 3^__ 1^__ | 1^. 2^. 5 | 5- 5_ 5__ 5__ 6__ 1^__ 6__ 1^__ | 1^. 2^. 5 | 2^. 3^. 5^__ 4^__ 3^__ 1^__ | 1^. 2^. 5 | 5- 5_ 1^__ 1^__ 0_ 1^__ 1^__");
+		auto MPMP = NotPiano::Piano::compose("5^ 3^ 1^ 5^ | 5^_ 6^_ 5^_ 4^_ 5^ 5^_ 1^^_ | 7^ 7^_ 6^_ 5^ 4^ | 3^ 4^ 5^-");
+		notBackGroundPiano.play(NGGYU, 480, 50);
+
+		PLauncher launcher;
 		launcher.Loop();
+
+		notBackGroundPiano.stop();
+		// what a lovely flower !
+		notBackGroundPiano.play(MPMP, 225, 50);
+
 		auto gameSize = launcher.GetGameScreenSize();
 		PLGame gameWindow(std::get<0>(gameSize), std::get<1>(gameSize), launcher.GetPlayerName());
 		gameWindow.Loop();
+
+		NotPiano::Piano::clearSheet(NGGYU);
+		NotPiano::Piano::clearSheet(MPMP);
 	#else
 
 		PLGame gameWindow(640, 480, "Developer");
@@ -158,7 +174,6 @@ int WinMain(_In_ HINSTANCE hInstance,
 		printf("Sorry, but PaperCraft crashed with information:\n%s\n", e.what());
 		system("pause");
 	}
-
 	return 0;
 }
 

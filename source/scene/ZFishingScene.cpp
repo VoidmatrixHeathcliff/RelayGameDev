@@ -134,9 +134,6 @@ void ZFishingScene::_OnUpdate(float deltaTime) {
 	timerText->ResizeAsText();
 	timerText->Move(iwidth / 6 * 4, iheight / 20+20);
 
-
-
-
 }
 
 void ZFishingScene::_drawBackground() {

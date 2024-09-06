@@ -4,9 +4,6 @@
 #include <fstream>
 #include <sstream>
 
-
-
-
 void FishingScene::_OnMessage(ExMessage& Message)
 {
 	//esc¼ü·µ»ØÖ÷²Ëµ¥

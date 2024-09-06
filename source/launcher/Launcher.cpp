@@ -1,6 +1,6 @@
 ﻿#include "../../include/launcher/Launcher.h"
 
-PLanuncher::PLanuncher() : PWindow(400, 600, "PaperCraft Launcher"), _assetManager(PGetSingleton<PAssetManager>())
+PLauncher::PLauncher() : PWindow(400, 600, "PaperCraft Launcher"), _assetManager(PGetSingleton<PAssetManager>())
 {
     _running = true;
     
@@ -14,7 +14,7 @@ PLanuncher::PLanuncher() : PWindow(400, 600, "PaperCraft Launcher"), _assetManag
     
     InitControl();
 }
-void PLanuncher::InitControl()
+void PLauncher::InitControl()
 {
     ui = new PGUIManager();
 
@@ -31,7 +31,7 @@ void PLanuncher::InitControl()
     _gameScreenButton->FontStyle.lfHeight = 18;
     _gameScreenButton->SetText(ostr::format("{}x{}", _gameWindowWidth, _gameWindowHeight));
     _gameScreenButton->Move(32, 242);
-    _gameScreenButton->OnClick.Connect(this, &PLanuncher::OnGameScreenButtonClicked);
+    _gameScreenButton->OnClick.Connect(this, &PLauncher::OnGameScreenButtonClicked);
 
     _playerNameText = new PTextLabel("Player Name");
     _playerNameText->FontStyle.lfHeight = 14;
@@ -44,12 +44,12 @@ void PLanuncher::InitControl()
     _playerNameInput->Move(32, 324);
     _playerNameInput->SetText(_config["launcher"]["name"].c_str());
 
-    _playerNameInput->OnFinish.Connect(this, &PLanuncher::OnNameChanged);
+    _playerNameInput->OnFinish.Connect(this, &PLauncher::OnNameChanged);
 
     _launchButton = new PStressButton(227, 55, "LAUNCH THE GAME");
     _launchButton->FontStyle.lfHeight = 24;
     _launchButton->Move(91, 431);
-    _launchButton->OnClick.Connect(this, &PLanuncher::OnLaunch);
+    _launchButton->OnClick.Connect(this, &PLauncher::OnLaunch);
 
     _windowSizeBackground = new PImageLabel("./assets/ui/launcher/size_background.png");
     _sizeTitleText = new PTextLabel("Select Your Size");
@@ -68,12 +68,12 @@ void PLanuncher::InitControl()
     _i1280x960->Move(_i1920x1080->GetX(), _i1920x1080->GetY() + _i1920x1080->GetHeight() + 20);
     _i640x480->Move(_i1280x960->GetX(), _i1280x960->GetY() + _i1280x960->GetHeight() + 20);
 
-    _i4096x3112->OnClick.Connect(this, &PLanuncher::SetI4096x3112);
-    _i3656x2664->OnClick.Connect(this, &PLanuncher::SetI3656x2664);
-    _i2560x1440->OnClick.Connect(this, &PLanuncher::SetI2560x1440);
-    _i1920x1080->OnClick.Connect(this, &PLanuncher::SetI1920x1080);
-    _i1280x960->OnClick.Connect(this, &PLanuncher::SetI1280x960);
-    _i640x480->OnClick.Connect(this, &PLanuncher::SetI640x480);
+    _i4096x3112->OnClick.Connect(this, &PLauncher::SetI4096x3112);
+    _i3656x2664->OnClick.Connect(this, &PLauncher::SetI3656x2664);
+    _i2560x1440->OnClick.Connect(this, &PLauncher::SetI2560x1440);
+    _i1920x1080->OnClick.Connect(this, &PLauncher::SetI1920x1080);
+    _i1280x960->OnClick.Connect(this, &PLauncher::SetI1280x960);
+    _i640x480->OnClick.Connect(this, &PLauncher::SetI640x480);
     
     _i4096x3112->Hide();
     _i3656x2664->Hide();
@@ -118,7 +118,7 @@ void PLanuncher::InitControl()
     ui->AddObject(_i1280x960);
     ui->AddObject(_i640x480);
 }
-void PLanuncher::SetI4096x3112()
+void PLauncher::SetI4096x3112()
 {
     _gameWindowWidth  = 4096;
     _gameWindowHeight = 3112;
@@ -138,7 +138,7 @@ void PLanuncher::SetI4096x3112()
 
     _gameScreenButton->SetText(ostr::format("{}x{}", _gameWindowWidth, _gameWindowHeight));
 }
-void PLanuncher::SetI3656x2664()
+void PLauncher::SetI3656x2664()
 {
     _gameWindowWidth  = 3656;
     _gameWindowHeight = 2664;
@@ -160,7 +160,7 @@ void PLanuncher::SetI3656x2664()
 
     _gameScreenButton->SetText(ostr::format("{}x{}", _gameWindowWidth, _gameWindowHeight));
 }
-void PLanuncher::SetI2560x1440()
+void PLauncher::SetI2560x1440()
 {
     _gameWindowWidth  = 2560;
     _gameWindowHeight = 1440;
@@ -182,7 +182,7 @@ void PLanuncher::SetI2560x1440()
 
     _gameScreenButton->SetText(ostr::format("{}x{}", _gameWindowWidth, _gameWindowHeight));
 }
-void PLanuncher::SetI1920x1080()
+void PLauncher::SetI1920x1080()
 {
     _gameWindowWidth  = 1920;
     _gameWindowHeight = 1080;
@@ -204,7 +204,7 @@ void PLanuncher::SetI1920x1080()
 
     _gameScreenButton->SetText(ostr::format("{}x{}", _gameWindowWidth, _gameWindowHeight));
 }
-void PLanuncher::SetI1280x960()
+void PLauncher::SetI1280x960()
 {
     _gameWindowWidth  = 1280;
     _gameWindowHeight = 960;
@@ -226,7 +226,7 @@ void PLanuncher::SetI1280x960()
 
     _gameScreenButton->SetText(ostr::format("{}x{}", _gameWindowWidth, _gameWindowHeight));
 }
-void PLanuncher::SetI640x480()
+void PLauncher::SetI640x480()
 {
     _gameWindowWidth  = 640;
     _gameWindowHeight = 480;
@@ -248,7 +248,7 @@ void PLanuncher::SetI640x480()
 
     _gameScreenButton->SetText(ostr::format("{}x{}", _gameWindowWidth, _gameWindowHeight));
 }
-void PLanuncher::OnGameScreenButtonClicked()
+void PLauncher::OnGameScreenButtonClicked()
 {
     for (auto& object : _sizeUI)
     {
@@ -259,17 +259,17 @@ void PLanuncher::OnGameScreenButtonClicked()
         object->Hide();
     }
 }
-void PLanuncher::OnLaunch()
+void PLauncher::OnLaunch()
 {
     _running = false;
 }
-void PLanuncher::OnNameChanged(PString Name)
+void PLauncher::OnNameChanged(PString Name)
 {
     _config["launcher"]["name"] = Name.c_str();
 
     _configFile->write(_config);
 }
-void PLanuncher::Loop()
+void PLauncher::Loop()
 {
     while (_running)
     {

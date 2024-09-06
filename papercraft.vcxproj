@@ -161,8 +161,10 @@
     <ClCompile Include="source\gui\Input.cpp" />
     <ClCompile Include="source\gui\ProgressBar.cpp" />
     <ClCompile Include="source\gui\TextLabel.cpp" />
+    <ClCompile Include="source\keyboard\keyboard.cpp" />
     <ClCompile Include="source\launcher\Launcher.cpp" />
     <ClCompile Include="source\mic\MCIManager.cpp" />
+    <ClCompile Include="source\Piano\Piano.cpp" />
     <ClCompile Include="source\scene\GameScene.cpp" />
     <ClCompile Include="source\scene\LoadScene.cpp" />
     <ClCompile Include="source\scene\MainScene.cpp" />
@@ -214,8 +216,10 @@
     <ClInclude Include="include\gui\ProgressBar.h" />
     <ClInclude Include="include\gui\Scene.h" />
     <ClInclude Include="include\gui\TextLabel.h" />
+    <ClInclude Include="include\keyboard\keyboard.h" />
     <ClInclude Include="include\launcher\Launcher.h" />
     <ClInclude Include="include\mic\MCIManager.h" />
+    <ClInclude Include="include\notPiano\notPiano.h" />
     <ClInclude Include="include\render\RenderInfo.h" />
     <ClInclude Include="include\scene\FishingScene.h" />
     <ClInclude Include="include\scene\GameScene.h" />

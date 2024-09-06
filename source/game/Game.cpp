@@ -1,4 +1,6 @@
 ﻿#include "../../include/game/Game.h"
+#include "../../include/keyboard/keyboard.h"
+#include "../../include/notPiano/notPiano.h"
 
 #include <codecvt>
 #include <numeric>
@@ -42,6 +44,7 @@ PLGame::~PLGame() {
 	delete loadScene;
 	delete gameScene;
 	delete fishingScene;
+	NotKeyBoard::KeyBoardControl::quit();
 }
 
 void PLGame::Loop() {
@@ -63,6 +66,8 @@ void PLGame::Loop() {
 
 	auto previousTime = std::chrono::high_resolution_clock::now();
 
+	NotPiano::Piano notSimplePiano;
+	unsigned char notes_down = 0;
 
 	while (true) {
 		if (gameScene->get_player_state() == PlayerState::Dying)
@@ -90,27 +95,33 @@ void PLGame::Loop() {
 		//handle message
 		ExMessage message;
 		while (peekmessage(&message)) {
-			if (message.message == WM_KEYDOWN && message.vkcode == 0x46 && currentScene != fishingScene)//F: 这样写的主要是想要能在任意场景按F都可以立即开始钓鱼并且不影响当前场景,希望后面的同学不要怪我，我真不知道咋办了555555
-			{
-				PScene* a = currentScene;
-				currentScene->OnExit();
-				currentScene = fishingScene;
-				currentScene->OnEnter();
-				fishingScene = a;
-			}
-
-//#define _TEST_ZFISHING_
-#ifdef  _TEST_ZFISHING_
-
-			if (message.message == WM_KEYDOWN && message.vkcode == VK_F1) {
-				SetCurrentScene(zFishingScene);	// F1进入Z钓鱼场景
-			}
-
-#endif //  _TEST_ZFISHING_
+			NotKeyBoard::KeyBoardControl::manager()->OnMessage(message);
 
 			currentScene->OnMessage(message);
 		}
 
+		if (currentScene == fishingScene && NotKeyBoard::KeyBoardControl::manager()->isDown(NotKeyBoard::F))//F: 这样写的主要是想要能在任意场景按F都可以立即开始钓鱼并且不影响当前场景,希望后面的同学不要怪我，我真不知道咋办了555555
+		{
+			PScene* a = currentScene;
+			currentScene->OnExit();
+			currentScene = fishingScene;
+			currentScene->OnEnter();
+			fishingScene = a;
+		}
+
+		for (int k = 1; k <= 7; k++)
+		{
+			if (!(notes_down & (1 << k)) && NotKeyBoard::KeyBoardControl::manager()->isDown((NotKeyBoard::NotVK)(k + NotKeyBoard::N0)))
+			{
+				notes_down |= 1 << k;
+				notSimplePiano.play(k);
+			}
+			else if (NotKeyBoard::KeyBoardControl::manager()->isUp((NotKeyBoard::NotVK)(k + NotKeyBoard::N0)))
+			{
+				notes_down &= ~(1 << k);
+				notSimplePiano.stop();
+			}
+		}
 
 		//calculate deltaTime
 		auto currentTime = std::chrono::high_resolution_clock::now();
@@ -119,19 +130,13 @@ void PLGame::Loop() {
 		float deltaTime = std::min(dt.count(), 0.1f);
 		if (deltaTime < 1000 / 60)
 			Sleep(1000 / 60 - deltaTime);
-	
-		
-		
+
 		//update
 		currentScene->OnUpdate(deltaTime);
 
 		//render
 		cleardevice();
 		currentScene->OnDraw(_windowDevice);
-
-		
-
-		
 
 	#ifdef _DEBUG
 		settextstyle(&debugFont);

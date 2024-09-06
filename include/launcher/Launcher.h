@@ -15,11 +15,11 @@
 #include "../EasyXBase.h"
 
 /// The launcher window
-class PLanuncher : public PWindow
+class PLauncher : public PWindow
 {
 public:
     /// Create the launcher window
-    PLanuncher();
+    PLauncher();
 
 public:
     /// Enter the message loop of the launcher
